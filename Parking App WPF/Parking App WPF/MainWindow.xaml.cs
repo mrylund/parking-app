@@ -59,6 +59,11 @@ namespace Parking_App_WPF
             return Tuple.Create(true, rank);
         }
 
+        private void SubmitForm(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Return) login(sender, e);
+        }
+
         private void login(object sender, RoutedEventArgs e)
         {
             TextBox usnTextBox = (TextBox)username_txtbx;

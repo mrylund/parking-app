@@ -7,9 +7,9 @@
         mc:Ignorable="d"
         Title="Login" Height="600" Width="400" ResizeMode="CanMinimize" WindowStartupLocation="CenterScreen" Opacity="0.95" Background="#FFCDCDCD">
     <Grid>
-        <Button x:Name="login_btn" Content="Login" HorizontalAlignment="Center" VerticalAlignment="Top" Width="215" Margin="0,344,0,0" Height="35" Click="login" Foreground="White" Background="#FF46F957" FontWeight="Bold"/>
-        <TextBox x:Name="password_txtbx" HorizontalAlignment="Center" Height="45" Margin="0,262,0,0" TextWrapping="Wrap" Text="password" VerticalAlignment="Top" Width="215" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" TextChanged="password_txtbx_TextChanged"  />
-        <TextBox x:Name="username_txtbx" HorizontalAlignment="Center" Height="45" Margin="0,195,0,0" TextWrapping="Wrap" Text="username" VerticalAlignment="Top" Width="215" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" TextChanged="username_txtbx_TextChanged" />
+        <Button x:Name="login_btn" TabIndex="3" Content="Login" HorizontalAlignment="Center" VerticalAlignment="Top" Width="215" Margin="0,344,0,0" Height="35" Click="login" Foreground="White" Background="#FF46F957" FontWeight="Bold"/>
+        <TextBox x:Name="password_txtbx" TabIndex="2" KeyUp="SubmitForm" HorizontalAlignment="Center" Height="45" Margin="0,262,0,0" TextWrapping="Wrap" Text="password" VerticalAlignment="Top" Width="215" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" TextChanged="password_txtbx_TextChanged"  />
+        <TextBox x:Name="username_txtbx" TabIndex="1" KeyUp="SubmitForm" HorizontalAlignment="Center" Height="45" Margin="0,195,0,0" TextWrapping="Wrap" Text="username" VerticalAlignment="Top" Width="215" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" TextChanged="username_txtbx_TextChanged" />
         <Label x:Name="appname_label" Content="ParQer" HorizontalAlignment="Center" Margin="0,40,0,0" VerticalAlignment="Top" FontSize="60" Foreground="White" FontWeight="Bold"/>
 
     </Grid>
