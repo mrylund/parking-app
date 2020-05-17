@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Diagnostics;
 using System.Linq;
 using System.Security.Cryptography;
@@ -46,20 +47,25 @@ namespace Parking_App_WPF
 
         private void AuthenticateUser(string username, string password)
         {
-            Debug.WriteLine("TRYING TO FIND USERNAME");
             string shaPassword = Encrypt(password);
             string query = String.Format("SELECT * FROM users WHERE Username='{0}' AND password='{1}' LIMIT 1", username, shaPassword);
-            MySqlDataReader reader = mysql.Select(query);
-            while (reader.Read())
-            {
-                Debug.WriteLine(reader["Name"]);
+            DataTable dt = mysql.Select(query);
+            if (dt.Rows.Count != 1) {
+                Debug.WriteLine("No user found with provided credentials");
+                return;
             }
+            DataRow dr = dt.Rows[0];
+            Debug.WriteLine(dr["Name"]);
         }
 
-        private void button_Click(object sender, RoutedEventArgs e)
+        private void login(object sender, RoutedEventArgs e)
         {
-            AuthenticateUser("sup2", "sup2");
-            test obj = new test();
+            TextBox usnTextBox = (TextBox)username_txtbx;
+            TextBox pwTextBox = (TextBox)password_txtbx;
+            string username = usnTextBox.Text;
+            string password = pwTextBox.Text;
+
+            AuthenticateUser(username, password);
             //this.Close();
             //obj.Show();
         }
@@ -73,13 +79,6 @@ namespace Parking_App_WPF
         private void password_txtbx_TextChanged(object sender, TextChangedEventArgs e)
         {
 
-        }
-
-        private void button_Click(object sender, RoutedEventArgs e)
-        {
-            LandingPage lp = new LandingPage();
-            this.Close();
-            lp.Show();
         }
 
     }
