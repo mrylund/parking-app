@@ -5,11 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Parking_App_WPF"
         mc:Ignorable="d"
-        Title="MainWindow" Height="600" Width="400" ResizeMode="CanMinimize" WindowStartupLocation="CenterScreen" Opacity="0.95">
+        Title="Login" Height="600" Width="400" ResizeMode="CanMinimize" WindowStartupLocation="CenterScreen" Opacity="0.95">
     <Grid>
-        <Button x:Name="button" Content="Login" HorizontalAlignment="Center" VerticalAlignment="Top" Width="215" Margin="0,344,0,0" Height="35"/>
-        <TextBox x:Name="textBox" HorizontalAlignment="Center" Height="45" Margin="0,262,0,0" TextWrapping="Wrap" Text="password" VerticalAlignment="Top" Width="215" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"  />
-        <TextBox x:Name="textBox_Copy" HorizontalAlignment="Center" Height="45" Margin="0,195,0,0" TextWrapping="Wrap" Text="username" VerticalAlignment="Top" Width="215" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" />
+        <Button x:Name="login_btn" Content="Login" HorizontalAlignment="Center" VerticalAlignment="Top" Width="215" Margin="0,344,0,0" Height="35" Click="button_Click"/>
+        <TextBox x:Name="password_txtbx" HorizontalAlignment="Center" Height="45" Margin="0,262,0,0" TextWrapping="Wrap" Text="password" VerticalAlignment="Top" Width="215" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" TextChanged="password_txtbx_TextChanged"  />
+        <TextBox x:Name="username_txtbx" HorizontalAlignment="Center" Height="45" Margin="0,195,0,0" TextWrapping="Wrap" Text="username" VerticalAlignment="Top" Width="215" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" TextChanged="username_txtbx_TextChanged" />
         <Label x:Name="label" Content="ParQer" HorizontalAlignment="Center" Margin="0,74,0,0" VerticalAlignment="Top" FontSize="40"/>
 
     </Grid>

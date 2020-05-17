@@ -24,5 +24,21 @@ namespace Parking_App_WPF
         {
             InitializeComponent();
         }
+
+        private void username_txtbx_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            
+            
+        }
+
+        private void password_txtbx_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+        
+        private void button_Click(object sender, RoutedEventArgs e)
+        {
+            
+        }
     }
 }
