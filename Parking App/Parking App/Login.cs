@@ -16,5 +16,25 @@ namespace Parking_App
         {
             InitializeComponent();
         }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Login_form_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void password_txtbx_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

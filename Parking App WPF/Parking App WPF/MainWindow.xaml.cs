@@ -27,18 +27,21 @@ namespace Parking_App_WPF
 
         private void username_txtbx_TextChanged(object sender, TextChangedEventArgs e)
         {
-            
-            
+
+
         }
 
         private void password_txtbx_TextChanged(object sender, TextChangedEventArgs e)
         {
 
         }
-        
+
         private void button_Click(object sender, RoutedEventArgs e)
         {
-            
+            LandingPage lp = new LandingPage();
+            this.Close();
+            lp.Show();
         }
+
     }
 }
