@@ -90,16 +90,20 @@ namespace Parking_App_WPF
 
 
         //Select statement
-        public MySqlDataReader Select(string query)
+        public DataTable Select(string query)
         {
             //Open connection
             if (this.OpenConnection() == true)
             {
                 //Create Command
-                MySqlCommand cmd = new MySqlCommand(query + ";CharSet=utf8;", connection);
+                MySqlCommand cmd = new MySqlCommand(query, connection);
                 //Create a data reader and Execute the command
                 MySqlDataReader dataReader = cmd.ExecuteReader();
-                return dataReader;
+                DataTable dt = new DataTable();
+                dt.Load(dataReader);
+
+                this.CloseConnection();
+                return dt;
             }
             return null;
         }
