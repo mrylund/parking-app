@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Parking_App
 {
-    public partial class Form1 : Form
+    public partial class Login_form : Form
     {
-        public Form1()
+        public Login_form()
         {
             InitializeComponent();
         }
