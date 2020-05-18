@@ -48,19 +48,20 @@ namespace Parking_App_WPF
         private User AuthenticateUser(string username, string password)
         {
             string shaPassword = Encrypt(password);
-            string query = String.Format("SELECT Username, Name, Room, LicensePlate, Rank FROM users WHERE Username='{0}' AND password='{1}' LIMIT 1", username, shaPassword);
+            string query = String.Format("SELECT ID, Username, Name, Room, LicensePlate, Rank FROM users WHERE Username='{0}' AND password='{1}' LIMIT 1", username, shaPassword);
             DataTable dt = mysql.Select(query);
             if (dt.Rows.Count != 1) {
                 Debug.WriteLine("No user found with provided credentials");
                 return null;
             }
             DataRow dr = dt.Rows[0];
+            int UID = dr["ID"] == DBNull.Value ? 0 : (int)dr["ID"];
             string Username = dr["Username"] == DBNull.Value ? string.Empty : (String)dr["Username"];
             string Name = dr["Name"] == DBNull.Value ? string.Empty : (String)dr["Name"];
             string Room = dr["Room"] == DBNull.Value ? string.Empty : (String)dr["Room"];
             string LicensePlate = dr["LicensePlate"] == DBNull.Value ? string.Empty : (String)dr["LicensePlate"];
             string Rank = dr["Rank"] == DBNull.Value ? string.Empty : (String)dr["Rank"];
-            User user = new User(Username, Name, Room, LicensePlate, Rank);
+            User user = new User(UID, Username, Name, Room, LicensePlate, Rank);
             return user;
         }
 
