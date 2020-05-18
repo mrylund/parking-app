@@ -19,9 +19,19 @@ namespace Parking_App_WPF
     /// </summary>
     public partial class LandingPage : Window
     {
-        public LandingPage()
+        private User user;
+        public LandingPage(Object user)
         {
+            this.user = (User)user;
             InitializeComponent();
+            setPageInfo();
+        }
+
+        private void setPageInfo()
+        {
+            residentName_label.Content = user.Name;
+            residentRoom_label.Content = "Room " + user.Room;
+            residentLicens_label.Content = String.IsNullOrEmpty(user.LicensePlate) ? "No vehicle registered" : user.LicensePlate;
         }
 
         private void listView_SelectionChanged(object sender, SelectionChangedEventArgs e)
