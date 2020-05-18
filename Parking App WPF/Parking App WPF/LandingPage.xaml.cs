@@ -28,5 +28,15 @@ namespace Parking_App_WPF
         {
 
         }
+
+        private void addAsGuest_btn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void removeGuest_btn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

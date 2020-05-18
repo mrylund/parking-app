@@ -9,7 +9,7 @@
     <Grid>
         <Label x:Name="appname_label" Content="ParQer" HorizontalAlignment="Center" Margin="0,40,0,0" VerticalAlignment="Top" FontSize="60" Foreground="White" FontWeight="Bold"/>
         <Label x:Name="myInfo_label" Content="MY INFORMATION" HorizontalAlignment="Left" Margin="45,150,0,0" VerticalAlignment="Top" FontSize="20" Foreground="White" FontWeight="Bold"/>
-        <Label x:Name="residentName_label" Content="Athusan Kugathasan" HorizontalAlignment="Left" Margin="45,192,0,0" VerticalAlignment="Top" FontSize="15" Foreground="#FF1E494B"/>
+        <Label x:Name="residentName_label" Content="Athusan Kugathasan" HorizontalAlignment="Left" Margin="45,192,0,0" VerticalAlignment="Top" FontSize="15" Foreground="Black"/>
         <Label x:Name="residentRoom_label" Content="Værelse 243" HorizontalAlignment="Left" Margin="45,227,0,0" VerticalAlignment="Top" FontSize="15"/>
         <Label x:Name="residentLicens_label" Content="XY 45 AB6" HorizontalAlignment="Left" Margin="45,260,0,0" VerticalAlignment="Top" FontSize="15"/>
         <Path Data="M289,165.33333 L289,424.16699" Fill="White" HorizontalAlignment="Center" Height="300" Margin="0,160,0,0" Stretch="Fill" Stroke="#FF686161" VerticalAlignment="Top" Width="0.5"/>
