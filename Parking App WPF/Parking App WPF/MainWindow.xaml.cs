@@ -77,7 +77,8 @@ namespace Parking_App_WPF
 
             if (info.Item2 == "Admin")
             {
-                
+                LandingWindowManager lwm = new LandingWindowManager();
+                lwm.Show();
             } else
             {
                 LandingPage l = new LandingPage();

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,13 +16,18 @@ using System.Windows.Shapes;
 namespace Parking_App_WPF
 {
     /// <summary>
-    /// Interaction logic for test.xaml
+    /// Interaction logic for LandingWindowManager.xaml
     /// </summary>
-    public partial class test : Window
+    public partial class LandingWindowManager : Window
     {
-        public test()
+        public LandingWindowManager()
         {
             InitializeComponent();
+        }
+        // TODO: CREATE METHOD FOR CHANGING PAGE 
+        public void manageUsers(object sender, RoutedEventArgs e)
+        {
+            Debug.WriteLine("HEJHEJ");
         }
     }
 }
