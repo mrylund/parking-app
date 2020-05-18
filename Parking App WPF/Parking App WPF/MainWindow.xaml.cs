@@ -45,18 +45,23 @@ namespace Parking_App_WPF
             }
         }
 
-        private Tuple<bool, string> AuthenticateUser(string username, string password)
+        private User AuthenticateUser(string username, string password)
         {
             string shaPassword = Encrypt(password);
-            string query = String.Format("SELECT * FROM users WHERE Username='{0}' AND password='{1}' LIMIT 1", username, shaPassword);
+            string query = String.Format("SELECT Username, Name, Room, LicensePlate, Rank FROM users WHERE Username='{0}' AND password='{1}' LIMIT 1", username, shaPassword);
             DataTable dt = mysql.Select(query);
             if (dt.Rows.Count != 1) {
                 Debug.WriteLine("No user found with provided credentials");
-                return Tuple.Create(false, "");
+                return null;
             }
             DataRow dr = dt.Rows[0];
-            string rank = (String)dr["Rank"];
-            return Tuple.Create(true, rank);
+            string Username = dr["Username"] == DBNull.Value ? string.Empty : (String)dr["Username"];
+            string Name = dr["Name"] == DBNull.Value ? string.Empty : (String)dr["Name"];
+            string Room = dr["Room"] == DBNull.Value ? string.Empty : (String)dr["Room"];
+            string LicensePlate = dr["LicensePlate"] == DBNull.Value ? string.Empty : (String)dr["LicensePlate"];
+            string Rank = dr["Rank"] == DBNull.Value ? string.Empty : (String)dr["Rank"];
+            User user = new User(Username, Name, Room, LicensePlate, Rank);
+            return user;
         }
 
         private void SubmitForm(object sender, KeyEventArgs e)
@@ -71,16 +76,16 @@ namespace Parking_App_WPF
             string username = usnTextBox.Text;
             string password = pwTextBox.Text;
 
-            var info = AuthenticateUser(username, password);
+            var user = AuthenticateUser(username, password);
 
-            if (!info.Item1) return;
+            if (user == null) return;
 
-            if (info.Item2 == "Admin")
+            if (user.Rank == "Admin")
             {
                 
             } else
             {
-                LandingPage l = new LandingPage();
+                LandingPage l = new LandingPage(user);
                 l.Show();
             }
             this.Close();
