@@ -59,6 +59,7 @@
       <DependentUpon>LandingWindowManager.xaml</DependentUpon>
     </Compile>
     <Compile Include="MySQL.cs" />
+    <Compile Include="User.cs" />
     <Page Include="LandingPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

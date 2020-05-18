@@ -71,7 +71,7 @@ namespace Parking_App_WPF
             }
             catch (MySqlException ex)
             {
-                Console.WriteLine(ex.Message);
+                Debug.WriteLine(ex.Message);
                 return false;
             }
         }
