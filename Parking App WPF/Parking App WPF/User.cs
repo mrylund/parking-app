@@ -40,7 +40,7 @@ namespace Parking_App_WPF
         {
             string query = String.Format("SELECT LicensePlate, created FROM guests WHERE Resident={0} AND created > TIMESTAMPADD(DAY, -1, NOW())", UID);
             DataTable dt = mysql.Select(query);
-            if (dt.Rows.Count > 1)
+            if (dt.Rows.Count < 1)
             {
                 Debug.WriteLine("No guests found for this user");
                 return;
@@ -55,7 +55,7 @@ namespace Parking_App_WPF
             }
         }
 
-        public (bool, string) addGuest(string LicensePlate)
+        private (bool, string) checkPlate(string LicensePlate)
         {
             string msg;
             string LicensePattern = "[A-Za-z][A-Za-z]\\s?[0-9][0-9]\\s?[0-9][0-9][0-9]";
@@ -70,6 +70,17 @@ namespace Parking_App_WPF
             LicensePlate = LicensePlate.Insert(2, " ");
             LicensePlate = LicensePlate.Insert(5, " ");
             LicensePlate = LicensePlate.ToUpper();
+
+            return (true, LicensePlate);
+        }
+
+        public (bool, string) addGuest(string LicensePlate)
+        {
+            string msg;
+
+            (bool, string) temp = checkPlate(LicensePlate);
+            if (!temp.Item1) return temp;
+            LicensePlate = temp.Item2;
 
             string query = String.Format("SELECT ID, LicensePlate, created, Resident FROM guests WHERE LicensePlate='{0}' AND created > TIMESTAMPADD(DAY, -1, NOW())", LicensePlate);
             DataTable dt = mysql.Select(query);
@@ -103,6 +114,19 @@ namespace Parking_App_WPF
             mysql.Execute(query);
             Debug.WriteLine(LicensePlate);
             return (false, "hej");
+        }
+
+        public (bool, string) removeGuest(string LicensePlate)
+        {
+            (bool, string) temp = checkPlate(LicensePlate);
+            if (!temp.Item1) return temp;
+            LicensePlate = temp.Item2;
+
+            // Kinda lazy way of doing it, but it works
+            string query = String.Format("UPDATE guests SET created = TIMESTAMPADD(DAY, -2, NOW()) WHERE LicensePlate = {0}' AND Resident = {1} AND created > TIMESTAMPADD(DAY, -1, NOW())", LicensePlate, UID);
+            mysql.Execute(query);
+
+            return (true, "");
         }
 
     }
