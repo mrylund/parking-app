@@ -60,7 +60,7 @@
     </Compile>
     <Compile Include="MySQL.cs" />
     <Compile Include="User.cs" />
-    <Page Include="LandingPage.xaml">
+    <Page Include="LandingWindowResident.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -76,8 +76,8 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="LandingPage.xaml.cs">
-      <DependentUpon>LandingPage.xaml</DependentUpon>
+    <Compile Include="LandingWindowResident.xaml.cs">
+      <DependentUpon>LandingWindowResident.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>

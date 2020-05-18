@@ -87,7 +87,7 @@ namespace Parking_App_WPF
                 lwm.Show();
             } else
             {
-                LandingPage l = new LandingPage(user);
+                LandingWindowResident l = new LandingWindowResident(user);
                 l.Show();
             }
             this.Close();

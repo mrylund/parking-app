@@ -15,12 +15,12 @@ using System.Windows.Shapes;
 namespace Parking_App_WPF
 {
     /// <summary>
-    /// Interaction logic for LandingPage.xaml
+    /// Interaction logic for LandingWindowResident.xaml
     /// </summary>
-    public partial class LandingPage : Window
+    public partial class LandingWindowResident : Window
     {
         private User user;
-        public LandingPage(Object user)
+        public LandingWindowResident(Object user)
         {
             this.user = (User)user;
             InitializeComponent();
