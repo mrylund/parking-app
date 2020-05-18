@@ -8,15 +8,19 @@ namespace Parking_App_WPF
 {
     class User
     {
-        private string username, name, room, licenseplate, rank;
+        public string Username { get; set; }
+        public string Name { get; set; }
+        public string Room { get; set; }
+        public string LicensePlate { get; set; }
+        public string Rank { get; set; }
 
-        public User(string username, string name, string room, string licenseplate, string rank)
+        public User(string Username, string Name, string Room, string LicensePlate, string Rank)
         {
-            this.username = username;
-            this.name = name;
-            this.room = room;
-            this.licenseplate = licenseplate;
-            this.rank = rank;
+            this.Username = Username;
+            this.Name = Name;
+            this.Room = Room;
+            this.LicensePlate = LicensePlate;
+            this.Rank = Rank;
         }
     }
 }
