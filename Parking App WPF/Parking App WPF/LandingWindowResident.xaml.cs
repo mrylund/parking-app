@@ -34,14 +34,10 @@ namespace Parking_App_WPF
             residentLicens_label.Content = String.IsNullOrEmpty(user.LicensePlate) ? "No vehicle registered" : user.LicensePlate;
         }
 
-        private void listView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void addGuest(object sender, RoutedEventArgs e)
         {
-
-        }
-
-        private void addAsGuest_btn_Click(object sender, RoutedEventArgs e)
-        {
-
+            TextBox LicenseTextBox = (TextBox)licensePlate_txtbx;
+            user.addGuest(LicenseTextBox.Text);
         }
 
         private void removeGuest_btn_Click(object sender, RoutedEventArgs e)
