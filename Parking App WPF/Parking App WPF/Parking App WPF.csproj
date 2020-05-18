@@ -123,8 +123,5 @@
     <Resource Include="Images\profile.png" />
     <Resource Include="Images\sign_out.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Resource Include="profile.png" />
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
