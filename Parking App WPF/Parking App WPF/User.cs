@@ -4,7 +4,11 @@ using System.Data;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Interop;
 
 namespace Parking_App_WPF
 {
@@ -29,10 +33,10 @@ namespace Parking_App_WPF
             this.LicensePlate = LicensePlate;
             this.Rank = Rank;
 
-            fetchCars();
+            fetchGuests();
         }
 
-        private void fetchCars()
+        private void fetchGuests()
         {
             string query = String.Format("SELECT LicensePlate, created FROM guests WHERE Resident={0} AND created > TIMESTAMPADD(DAY, -1, NOW())", UID);
             DataTable dt = mysql.Select(query);
@@ -50,5 +54,35 @@ namespace Parking_App_WPF
                 Debug.WriteLine(String.Format("License Plate: {0}    Created: {1}", license, created));
             }
         }
+
+        public (bool, string) addGuest(string LicensePlate)
+        {
+            string LicensePattern = "[A-Za-z][A-Za-z]\\s?[0-9][0-9]\\s?[0-9][0-9][0-9]";
+            if (!Regex.Match(LicensePlate, LicensePattern).Success)
+            {
+                string msg = "The license plate does not match the correct format";
+                Debug.WriteLine(msg);
+                return (false, msg);
+            }
+
+            LicensePlate = LicensePlate.Replace(" ", String.Empty);
+            LicensePlate = LicensePlate.Insert(2, " ");
+            LicensePlate = LicensePlate.Insert(5, " ");
+            LicensePlate = LicensePlate.ToUpper();
+
+            string query = String.Format("SELECT LicensePlate, created FROM guests WHERE LicensePlate='{0}' AND created > TIMESTAMPADD(DAY, -1, NOW())", LicensePlate);
+            DataTable dt = mysql.Select(query);
+            if (dt.Rows.Count > 0)
+            {
+                string msg = "An active guest pass with given license already exist";
+                Debug.WriteLine(msg);
+                return (false, msg);
+            }
+
+            Debug.WriteLine(LicensePlate);
+            return (false, "hej");
+
+        }
+
     }
 }
