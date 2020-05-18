@@ -71,12 +71,13 @@ namespace Parking_App_WPF
             LicensePlate = LicensePlate.Insert(5, " ");
             LicensePlate = LicensePlate.ToUpper();
 
-            string query = String.Format("SELECT ID, LicensePlate, created FROM guests WHERE LicensePlate='{0}' AND created > TIMESTAMPADD(DAY, -1, NOW())", LicensePlate);
+            string query = String.Format("SELECT ID, LicensePlate, created, Resident FROM guests WHERE LicensePlate='{0}' AND created > TIMESTAMPADD(DAY, -1, NOW())", LicensePlate);
             DataTable dt = mysql.Select(query);
             if (dt.Rows.Count > 0)
             {
                 DataRow dr = dt.Rows[0];
-                if ((DateTime.Now - (DateTime)dr["created"]).TotalHours > 23)
+                int Resident = dr["Resident"] == DBNull.Value ? 0 : Convert.ToInt32(dr["Resident"]);
+                if ((DateTime.Now - (DateTime)dr["created"]).TotalHours > 23 && Resident == UID)
                 {
                     query = String.Format("UPDATE guests SET created=current_timestamp() WHERE ID='{0}' AND Resident='{1}'", Convert.ToInt32(dr["ID"]), UID);
                     mysql.Execute(query);
