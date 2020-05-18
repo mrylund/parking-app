@@ -21,7 +21,7 @@ namespace Parking_App_WPF
         public string Room { get; set; }
         public string LicensePlate { get; set; }
         public string Rank { get; set; }
-        List<(string, DateTime)> guests { get; set; } = new List<(string, DateTime)>();
+        public List<(string, DateTime)> guests { get; set; } = new List<(string, DateTime)>();
 
         public User(int UID, string Username, string Name, string Room, string LicensePlate, string Rank)
         {
@@ -38,7 +38,8 @@ namespace Parking_App_WPF
 
         private void fetchGuests()
         {
-            string query = String.Format("SELECT LicensePlate, created FROM guests WHERE Resident={0} AND created > TIMESTAMPADD(DAY, -1, NOW())", UID);
+            guests.Clear();
+            string query = String.Format("SELECT LicensePlate, created FROM guests WHERE Resident={0} AND created > TIMESTAMPADD(DAY, -1, NOW()) ORDER BY created DESC", UID);
             DataTable dt = mysql.Select(query);
             if (dt.Rows.Count < 1)
             {
@@ -112,8 +113,8 @@ namespace Parking_App_WPF
 
             query = string.Format("INSERT INTO guests(LicensePlate, Resident) VALUES('{0}', '{1}')", LicensePlate, UID);
             mysql.Execute(query);
-            Debug.WriteLine(LicensePlate);
-            return (false, "hej");
+            fetchGuests();
+            return (false, "");
         }
 
         public (bool, string) removeGuest(string LicensePlate)
@@ -122,9 +123,11 @@ namespace Parking_App_WPF
             if (!temp.Item1) return temp;
             LicensePlate = temp.Item2;
 
-            // Kinda lazy way of doing it, but it works
-            string query = String.Format("UPDATE guests SET created = TIMESTAMPADD(DAY, -2, NOW()) WHERE LicensePlate = {0}' AND Resident = {1} AND created > TIMESTAMPADD(DAY, -1, NOW())", LicensePlate, UID);
+            // Kinda lazy way of doing it, but it works 
+            // TODO: Make it remove data after x time, probably a database fix
+            string query = String.Format("UPDATE guests SET created = TIMESTAMPADD(DAY, -2, NOW()) WHERE LicensePlate = '{0}' AND Resident = '{1}' AND created > TIMESTAMPADD(DAY, -1, NOW())", LicensePlate, UID);
             mysql.Execute(query);
+            fetchGuests();
 
             return (true, "");
         }
