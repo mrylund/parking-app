@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -25,10 +26,17 @@ namespace Parking_App_WPF
         }
         public void goBackHome(object sender, RoutedEventArgs e)
         {
-            LandingWindowManager lwm = new LandingWindowManager();
-            lwm.Show();
-            this.Close();
+           
+            LandingWindowManager lwm = new LandingWindowManager()
+            {
+                Owner = this,
+                WindowStartupLocation = System.Windows.WindowStartupLocation.CenterOwner
+            };
 
+            lwm.Show();
+            lwm.Owner = null;
+
+            this.Close();
         }
     }
 }
