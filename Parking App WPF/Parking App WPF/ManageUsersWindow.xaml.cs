@@ -31,10 +31,17 @@ namespace Parking_App_WPF
 
         public void goBackHome(object sender, RoutedEventArgs e)
         {
-            LandingWindowManager lwm = new LandingWindowManager();
-            lwm.Show();
-            this.Close();
+           
+            LandingWindowManager lwm = new LandingWindowManager()
+            {
+                Owner = this,
+                WindowStartupLocation = System.Windows.WindowStartupLocation.CenterOwner
+            };
 
+            lwm.Show();
+            lwm.Owner = null;
+
+            this.Close();
         }
 
         private User GetUserByRoom(string roomNumber)
