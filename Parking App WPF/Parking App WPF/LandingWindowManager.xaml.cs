@@ -24,8 +24,22 @@ namespace Parking_App_WPF
         {
             InitializeComponent();
         }
+
+        public void SignOut(object sender, RoutedEventArgs E)
+        {
+            MainWindow mainW = new MainWindow
+            {
+                Owner = this,
+                WindowStartupLocation = System.Windows.WindowStartupLocation.CenterOwner
+            };
+            mainW.Show();
+            mainW.Owner = null;
+
+            this.Close();
+        }
+
         // TODO: CREATE METHOD FOR CHANGING PAGE 
-        public void manageUsers(object sender, RoutedEventArgs e)
+        public void ManageUsers(object sender, RoutedEventArgs e)
         {
       
             ManageUsersWindow muw = new ManageUsersWindow

@@ -39,5 +39,16 @@
                 </Style>
             </TextBlock.Style>
         </TextBlock>
+        <Image x:Name="sign_out_png" Margin="40,70,0,0" MouseUp="SignOut" Source="Images/sign_out.png" Stretch="Fill" HorizontalAlignment="Left" VerticalAlignment="Top" Height="42" Width="40" RenderTransformOrigin="0.5,0.5" Cursor="Hand">
+            <Image.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleX="-1"/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Image.RenderTransform>
+        </Image>
+        <Label x:Name="label" Content="SIGN OUT" MouseUp="SignOut" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="22,40,0,0" FontWeight="Bold" FontSize="14" Cursor="Hand"/>
     </Grid>
 </Window>
