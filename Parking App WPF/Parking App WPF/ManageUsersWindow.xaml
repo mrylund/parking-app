@@ -43,7 +43,7 @@
         <Label x:Name="findResidentRoom_label" Content="ROOM" HorizontalAlignment="Left" Margin="294,211,0,0" VerticalAlignment="Top" FontSize="14" Visibility="Hidden"/>
         <Label x:Name="findResidentLicense_label" Content="LICENSEPLATE" HorizontalAlignment="Left" Margin="155,265,0,0" VerticalAlignment="Top" FontSize="14" Visibility="Hidden"/>
 
-        <Label x:Name="addResident_label" Content="ADD A RESIDENT" HorizontalAlignment="Center" Margin="201,310,188,0" VerticalAlignment="Top" FontSize="20" FontWeight="Bold"/>
+        <Label x:Name="addResident_label" Content="ADD A RESIDENT" HorizontalAlignment="Center" Margin="0,310,0,0" VerticalAlignment="Top" FontSize="20" FontWeight="Bold"/>
         <Label x:Name="addResidentFirstname_label" Content="FIRST NAME" HorizontalAlignment="Left" Margin="120,361,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold"/>
         <Label x:Name="addResidentLastname_label" Content="LAST NAME" HorizontalAlignment="Left" Margin="295,361,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold"/>
         <Label x:Name="addResidentUsername_label" Content="USERNAME" HorizontalAlignment="Left" Margin="120,443,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold"/>
