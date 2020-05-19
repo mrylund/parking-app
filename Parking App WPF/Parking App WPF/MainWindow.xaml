@@ -8,8 +8,43 @@
         Title="Login" Height="600" Width="400" ResizeMode="CanMinimize" WindowStartupLocation="CenterScreen" Opacity="0.95" Background="#FFCDCDCD">
     <Grid>
         <Button x:Name="login_btn" TabIndex="3" Content="Login" HorizontalAlignment="Center" VerticalAlignment="Top" Width="215" Margin="0,345,0,0" Height="35" Click="login" Foreground="White" Background="#FF46F957" FontWeight="Bold"/>
-        <TextBox x:Name="password_txtbx" TabIndex="2" KeyUp="SubmitForm" HorizontalAlignment="Center" Height="45" Margin="0,262,0,0" TextWrapping="Wrap" Text="password" VerticalAlignment="Top" Width="215" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" TextChanged="password_txtbx_TextChanged"  />
-        <TextBox x:Name="username_txtbx" TabIndex="1" KeyUp="SubmitForm" HorizontalAlignment="Center" Height="45" Margin="0,195,0,0" TextWrapping="Wrap" Text="username" VerticalAlignment="Top" Width="215" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" TextChanged="username_txtbx_TextChanged" />
+        <TextBox x:Name="username_txtbx" TabIndex="1" KeyUp="SubmitForm" HorizontalAlignment="Center" Height="45" Margin="0,195,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="215" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" TextChanged="username_txtbx_TextChanged" FontSize="14" Padding="0" />
+        <TextBlock x:Name="Placeholder_username" IsHitTestVisible="False" TextWrapping="Wrap" Text="Username" Margin="0,196,0,0" Foreground="DarkGray" VerticalAlignment="Top"  HorizontalAlignment="Center" Width="214" Height="44" TextAlignment="Center" FontSize="14" Padding="0,12,0,0">
+            <TextBlock.Style>
+                <Style TargetType="{x:Type TextBlock}">
+                    <Setter Property="Visibility" Value="Collapsed"/>
+                    <Style.Triggers>
+                        <MultiDataTrigger>
+                            <MultiDataTrigger.Conditions>
+                                <Condition Binding="{Binding Text, ElementName=username_txtbx}" Value=""/>
+                                <Condition Binding="{Binding IsFocused, ElementName=username_txtbx}" Value="False" />
+                            </MultiDataTrigger.Conditions>
+                            <Setter Property="Visibility" Value="Visible"/>
+                        </MultiDataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </TextBlock.Style>
+        </TextBlock>
+
+        <TextBox x:Name="password_txtbx" TabIndex="2" KeyUp="SubmitForm" HorizontalAlignment="Center" Height="45" Margin="0,262,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="215" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" TextChanged="password_txtbx_TextChanged" FontSize="14"  />
+        <TextBlock x:Name="Placeholder_password" IsHitTestVisible="False" TextWrapping="Wrap" Text="Password" Margin="0,262,0,0" Foreground="DarkGray" VerticalAlignment="Top"  HorizontalAlignment="Center" Width="214" Height="44" TextAlignment="Center" FontSize="14" Padding="0,13,0,0">
+            <TextBlock.Style>
+                <Style TargetType="{x:Type TextBlock}">
+                    <Setter Property="Visibility" Value="Collapsed"/>
+                    <Style.Triggers>
+                        <MultiDataTrigger>
+                            <MultiDataTrigger.Conditions>
+                                <Condition Binding="{Binding Text, ElementName=password_txtbx}" Value=""/>
+                                <Condition Binding="{Binding IsFocused, ElementName=password_txtbx}" Value="False" />
+                            </MultiDataTrigger.Conditions>
+                            <Setter Property="Visibility" Value="Visible"/>
+                        </MultiDataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </TextBlock.Style>
+        </TextBlock>
+
+
         <Label x:Name="appname_label" Content="ParQer" HorizontalAlignment="Center" Margin="0,40,0,0" VerticalAlignment="Top" FontSize="60" Foreground="White" FontWeight="Bold"/>
 
     </Grid>
