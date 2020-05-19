@@ -76,16 +76,18 @@ namespace Parking_App_WPF
             }
         }
 
-        public void Execute(string query)
+        public bool Execute(string query)
         {
             if (this.OpenConnection() == true)
             {
                 Debug.WriteLine(query);
                 MySqlCommand cmd = new MySqlCommand(query, connection);
 
-                cmd.ExecuteNonQuery();
+                int rows = cmd.ExecuteNonQuery();
                 this.CloseConnection();
+                return rows != 0;
             }
+            return false;
         }
 
 
