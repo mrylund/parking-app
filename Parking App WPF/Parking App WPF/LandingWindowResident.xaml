@@ -1,4 +1,4 @@
-﻿<Window x:Class="Parking_App_WPF.LandingWindowResident"
+<Window x:Class="Parking_App_WPF.LandingWindowResident"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -13,12 +13,12 @@
         <Label x:Name="residentRoom_label" Content="Værelse 243" HorizontalAlignment="Left" Margin="45,227,0,0" VerticalAlignment="Top" FontSize="15"/>
         <Label x:Name="residentLicens_label" Content="XY 45 AB6" HorizontalAlignment="Left" Margin="45,260,0,0" VerticalAlignment="Top" FontSize="15"/>
         <Path Data="M289,165.33333 L289,424.16699" Fill="White" HorizontalAlignment="Center" Height="200" Margin="0,160,0,0" Stretch="Fill" Stroke="#FF686161" VerticalAlignment="Top" Width="0.5"/>
-        <Label x:Name="guestLicense_label" Content="GUEST LICENSPLATES" HorizontalAlignment="Left" Margin="340,150,0,0" VerticalAlignment="Top" FontSize="20" Foreground="White" FontWeight="Bold"/>
-        <Label x:Name="guestCar1_label" Content="Registered car" HorizontalAlignment="Left" Margin="340,192,0,0" VerticalAlignment="Top" FontSize="15" Visibility="Hidden"/>
-        <Label x:Name="guestCar2_label" Content="Registered car" HorizontalAlignment="Left" Margin="340,227,0,0" VerticalAlignment="Top" FontSize="15" Visibility="Hidden"/>
-        <Label x:Name="guestCar3_label" Content="Registered car" HorizontalAlignment="Left" Margin="340,260,0,0" VerticalAlignment="Top" FontSize="15" Visibility="Hidden"/>
-        <Label x:Name="guestCar4_label" Content="Registered car" HorizontalAlignment="Left" Margin="340,295,0,0" VerticalAlignment="Top" FontSize="15" Visibility="Hidden"/>
-        <Label x:Name="guestCar5_label" Content="Registered car" HorizontalAlignment="Left" Margin="340,330,0,0" VerticalAlignment="Top" FontSize="15" Visibility="Hidden"/>
+        <Label x:Name="guestLicense_label" Content="GUEST LICENSPLATES" HorizontalAlignment="Right" Margin="0,150,25,0" VerticalAlignment="Top" FontSize="20" Foreground="White" FontWeight="Bold"/>
+        <Label x:Name="guestCar1_label" Content="Registered car" HorizontalAlignment="Left" Margin="330,192,0,0" VerticalAlignment="Top" FontSize="15" Visibility="Hidden"/>
+        <Label x:Name="guestCar2_label" Content="Registered car" HorizontalAlignment="Left" Margin="330,227,0,0" VerticalAlignment="Top" FontSize="15" Visibility="Hidden"/>
+        <Label x:Name="guestCar3_label" Content="Registered car" HorizontalAlignment="Left" Margin="330,260,0,0" VerticalAlignment="Top" FontSize="15" Visibility="Hidden"/>
+        <Label x:Name="guestCar4_label" Content="Registered car" HorizontalAlignment="Left" Margin="330,295,0,0" VerticalAlignment="Top" FontSize="15" Visibility="Hidden"/>
+        <Label x:Name="guestCar5_label" Content="Registered car" HorizontalAlignment="Left" Margin="330,330,0,0" VerticalAlignment="Top" FontSize="15" Visibility="Hidden"/>
         <Button x:Name="addAsGuest_btn" Content="Add as Guest" HorizontalAlignment="Center" VerticalAlignment="Top" Width="214" Margin="0,546.013,0,0" Height="38" FontWeight="Bold" Background="#FF46F957" Foreground="White" Click="addGuest"/>
         <Button x:Name="removeGuest_btn" Content="Remove Guest" HorizontalAlignment="Center" VerticalAlignment="Top" Width="214" Margin="0,604,0,0" Height="38" Background="#FFF12525" FontWeight="Bold" Foreground="#FFFFE6E6" Click="removeGuest"/>
         <TextBox x:Name="licensePlate_txtbx" Height="40" Margin="0,486.013,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="214" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Center" FontSize="14"/>
