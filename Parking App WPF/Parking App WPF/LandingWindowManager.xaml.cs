@@ -24,14 +24,34 @@ namespace Parking_App_WPF
         {
             InitializeComponent();
         }
-        // TODO: CREATE METHOD FOR CHANGING PAGE 
-        public void manageUsers(object sender, RoutedEventArgs e)
-        {
-            ManageUsersWindow muw = new ManageUsersWindow();
-            muw.Show();
-            this.Close();
-            Debug.WriteLine("HEJHEJ");
 
+        public void SignOut(object sender, RoutedEventArgs E)
+        {
+            MainWindow mainW = new MainWindow
+            {
+                Owner = this,
+                WindowStartupLocation = System.Windows.WindowStartupLocation.CenterOwner
+            };
+            mainW.Show();
+            mainW.Owner = null;
+
+            this.Close();
+        }
+
+        // TODO: CREATE METHOD FOR CHANGING PAGE 
+        public void ManageUsers(object sender, RoutedEventArgs e)
+        {
+      
+            ManageUsersWindow muw = new ManageUsersWindow
+            {
+                Owner = this,
+                WindowStartupLocation = System.Windows.WindowStartupLocation.CenterOwner
+            };
+
+            muw.Show();
+            muw.Owner = null;
+            
+            this.Close();
         }
     }
 }

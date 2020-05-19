@@ -9,7 +9,7 @@
         Title="LandingWindowManager" Height="700" Width="575" Background="#FFCDCDCD" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize">
     <Grid>
         <Label x:Name="appname_label" Content="ParQer" HorizontalAlignment="Center" Margin="0,40,0,0" VerticalAlignment="Top" FontSize="60" Foreground="White" FontWeight="Bold"/>
-        <Image x:Name="sign_out_png" Margin="40,70,0,0" Source="/Images/sign_out.png" Stretch="Fill" HorizontalAlignment="Left" VerticalAlignment="Top" Height="42" Width="40" RenderTransformOrigin="0.5,0.5">
+        <Image x:Name="sign_out_png" Margin="40,70,0,0" MouseUp="SignOut" Source="/Images/sign_out.png" Stretch="Fill" HorizontalAlignment="Left" VerticalAlignment="Top" Height="42" Width="40" RenderTransformOrigin="0.5,0.5" Cursor="Hand">
             <Image.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform ScaleX="-1"/>
@@ -19,7 +19,7 @@
                 </TransformGroup>
             </Image.RenderTransform>
         </Image>
-        <Label x:Name="label" Content="SIGN OUT" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="22,40,0,0" FontWeight="Bold" FontSize="14"/>
+        <Label x:Name="label" Content="SIGN OUT" MouseUp="SignOut" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="22,40,0,0" FontWeight="Bold" FontSize="14" Cursor="Hand"/>
 
         <Image x:Name="homelogo_png" Margin="0,550,0,0" Source="Images/homelogo.png" HorizontalAlignment="Center" VerticalAlignment="Top" Height="40" Width="40"/>
         <Label x:Name="label1" Content="HOME" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,590,0,0" FontSize="14" FontWeight="Bold"/>
@@ -43,8 +43,8 @@
             </TextBlock.Style>
         </TextBlock>
         <Button x:Name="button" Content="CHECK" HorizontalAlignment="Center" Margin="0,355,0,0" VerticalAlignment="Top" Width="215" Height="30" Background="#FF46F957" Foreground="White"/>
-        <Image x:Name="profile_png" Margin="0,550,60,0" MouseUp="manageUsers" Source="Images/profile.png"  HorizontalAlignment="Right" VerticalAlignment="Top" Height="38" Width="38" Cursor="Hand"/>
-        <Label x:Name="label3" Content="MANAGE USERS" MouseUp="manageUsers" HorizontalAlignment="Right" Margin="0,590,24,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="14" Cursor="Hand"/>
+        <Image x:Name="profile_png" Margin="0,550,60,0" MouseUp="ManageUsers" Source="Images/profile.png"  HorizontalAlignment="Right" VerticalAlignment="Top" Height="38" Width="38" Cursor="Hand"/>
+        <Label x:Name="label3" Content="MANAGE USERS" MouseUp="ManageUsers" HorizontalAlignment="Right" Margin="0,590,24,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="14" Cursor="Hand"/>
         <Image x:Name="icon_list_png" Margin="80,550,0,0" Source="Images/icon-list.png" Stretch="Fill" Width="40" Height="45" HorizontalAlignment="Left" VerticalAlignment="Top"/>
         <Label x:Name="label4" Content="CAR OVERVIEW" HorizontalAlignment="Left" Margin="40,590,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="14"/>
 

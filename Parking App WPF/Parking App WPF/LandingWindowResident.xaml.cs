@@ -27,6 +27,19 @@ namespace Parking_App_WPF
             setPageInfo();
         }
 
+        public void SignOut(object sender, RoutedEventArgs E)
+        {
+            MainWindow mainW = new MainWindow
+            {
+                Owner = this,
+                WindowStartupLocation = System.Windows.WindowStartupLocation.CenterOwner
+            };
+            mainW.Show();
+            mainW.Owner = null;
+
+            this.Close();
+        }
+
         private void setPageInfo()
         {
             residentName_label.Content = user.Name;

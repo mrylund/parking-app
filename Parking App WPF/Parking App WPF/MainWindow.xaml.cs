@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Diagnostics;
 using System.Linq;
+using System.Media;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
@@ -83,12 +84,22 @@ namespace Parking_App_WPF
 
             if (user.Rank == "Admin")
             {
-                LandingWindowManager lwm = new LandingWindowManager();
+                LandingWindowManager lwm = new LandingWindowManager()
+                {
+                    Owner = this,
+                    WindowStartupLocation = System.Windows.WindowStartupLocation.CenterOwner
+                };
                 lwm.Show();
+                lwm.Owner = null;
             } else
             {
-                LandingWindowResident l = new LandingWindowResident(user);
+                LandingWindowResident l = new LandingWindowResident(user)
+                {
+                    Owner = this,
+                    WindowStartupLocation = System.Windows.WindowStartupLocation.CenterOwner
+                };
                 l.Show();
+                l.Owner = null;
             }
             this.Close();
         }
