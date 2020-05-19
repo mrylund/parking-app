@@ -36,6 +36,11 @@ namespace Parking_App_WPF
             fetchGuests();
         }
 
+        public User()
+        {
+
+        }
+
         private void fetchGuests()
         {
             guests.Clear();
@@ -56,7 +61,7 @@ namespace Parking_App_WPF
             }
         }
 
-        private (bool, string) checkPlate(string LicensePlate)
+        public (bool, string) checkPlate(string LicensePlate)
         {
             string msg;
             string LicensePattern = "[A-Za-z][A-Za-z]\\s?[0-9][0-9]\\s?[0-9][0-9][0-9]";
