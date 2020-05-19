@@ -21,9 +21,9 @@
         </Image>
         <Label x:Name="label" Content="SIGN OUT" MouseUp="SignOut" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="22,40,0,0" FontWeight="Bold" FontSize="14" Cursor="Hand"/>
 
-        <Label x:Name="label2" Content="CHECK LICENSEPLATE" HorizontalAlignment="Center" Margin="0,176,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="20" Foreground="White"/>
-        <TextBox x:Name="checklicense_txtbx" HorizontalAlignment="Center" Height="40" Margin="0,300,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="215" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="14"/>
-        <TextBlock x:Name="Placeholder_checklicense" IsHitTestVisible="False" TextWrapping="Wrap" Text="Check Licenseplate" Margin="0,300,0,0" Foreground="DarkGray" VerticalAlignment="Top"  HorizontalAlignment="Center" Width="214" Height="40" TextAlignment="Center" FontSize="14" Padding="0,10.8,0,0">
+        <Label x:Name="checkLicenseplate_Title" Content="CHECK LICENSEPLATE" HorizontalAlignment="Center" Margin="0,200,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="20" Foreground="White"/>
+        <TextBox x:Name="checklicense_txtbx" HorizontalAlignment="Center" Height="40" Margin="0,333,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="215" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="14"/>
+        <TextBlock x:Name="Placeholder_checklicense" IsHitTestVisible="False" TextWrapping="Wrap" Text="Check Licenseplate" Margin="178,333,177,0" Foreground="DarkGray" VerticalAlignment="Top"  HorizontalAlignment="Center" Width="214" Height="40" TextAlignment="Center" FontSize="14" Padding="0,10.8,0,0">
             <TextBlock.Style>
                 <Style TargetType="{x:Type TextBlock}">
                     <Setter Property="Visibility" Value="Collapsed"/>
@@ -39,11 +39,12 @@
                 </Style>
             </TextBlock.Style>
         </TextBlock>
-        <Button x:Name="button" Content="CHECK" HorizontalAlignment="Center" Margin="0,355,0,0" VerticalAlignment="Top" Width="215" Height="30" Background="#FF46F957" Foreground="White"/>
+        <Button x:Name="button" Content="CHECK" HorizontalAlignment="Center" Margin="0,388,0,0" VerticalAlignment="Top" Width="215" Height="30" Background="#FF46F957" Foreground="White"/>
         <Image x:Name="profile_png" Margin="0,550,60,0" MouseUp="ManageUsers" Source="Images/profile.png"  HorizontalAlignment="Right" VerticalAlignment="Top" Height="38" Width="38" Cursor="Hand"/>
         <Label x:Name="label3" Content="MANAGE USERS" MouseUp="ManageUsers" HorizontalAlignment="Right" Margin="0,590,24,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="14" Cursor="Hand"/>
         <Image x:Name="icon_list_png" Margin="80,550,0,0" Source="Images/icon-list.png" Stretch="Fill" Width="40" Height="45" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-        <Label x:Name="label4" Content="CAR OVERVIEW" HorizontalAlignment="Left" Margin="40,590,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="14"/>
+        <Label x:Name="carOverview_label" Content="CAR OVERVIEW" HorizontalAlignment="Left" Margin="40,590,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="14"/>
+        <Label x:Name="checkLicenseplate_label" Content="This car is a guest of room 243 and has 23 hrs left" HorizontalAlignment="Center" Margin="0,270,0,0" VerticalAlignment="Top" FontSize="14" Width="340" FontWeight="Bold"/>
 
     </Grid>
 </Window>
