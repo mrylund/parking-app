@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
 using System.Linq;
@@ -91,16 +92,30 @@ namespace Parking_App_WPF
             string licenseplate = licensePlateTextBox.Text;
 
             User user = new User();
-            var info = user.checkPlate(licenseplate);
-            if (!info.Item1)
+            if (licenseplate != string.Empty)
             {
-                return;
+                var info = user.checkPlate(licenseplate);
+                if (!info.Item1)
+                {
+                    return;
+                }
+                licenseplate = info.Item2;
             }
-            licenseplate = info.Item2;
+
 
             string query = String.Format("INSERT INTO users (Name, Room, username, password, rank, LicensePlate) VALUES ('{0}', '{1}', '{2}', '{3}', '{4}', '{5}')", firstname + " " + lastname, roomnumber, username, Encrypt(password), "Resident", licenseplate);
 
             bool success = mysql.Execute(query);
+            if (success)
+            {
+                firstnameTextBox.Text = string.Empty;
+                lastnameTextBox.Text = string.Empty;
+                usernameTextBox.Text = string.Empty;
+                passwordTextBox.Text = string.Empty;
+                roomNumberTextBox.Text = string.Empty;
+                licensePlateTextBox.Text = string.Empty;
+
+            }
             // TODO: Show a message with fail / success message
         }
 
@@ -145,6 +160,8 @@ namespace Parking_App_WPF
 
             findResidentUsername_label.Content = user.Username;
             findResidentUsername_label.Visibility = Visibility.Visible;
+
+            roomTextBox.Text = string.Empty;
         }
     }
 }
