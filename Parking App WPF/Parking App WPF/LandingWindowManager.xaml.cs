@@ -27,7 +27,16 @@ namespace Parking_App_WPF
         // TODO: CREATE METHOD FOR CHANGING PAGE 
         public void manageUsers(object sender, RoutedEventArgs e)
         {
+            ManageUsersWindow muw = new ManageUsersWindow
+            {
+                Owner = this,
+                WindowStartupLocation = WindowStartupLocation.CenterOwner
+            };
+            muw.Show();
+            muw.Owner = null;
+            this.Close();
             Debug.WriteLine("HEJHEJ");
+
         }
     }
 }

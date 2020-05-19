@@ -1,0 +1,53 @@
+﻿<Window x:Class="Parking_App_WPF.ManageUsersWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Parking_App_WPF"
+        mc:Ignorable="d"
+   
+        Title="ManageUsersWindow" Height="700" Width="570">
+    <Grid Background="#FFCDCDCD">
+        <Label x:Name="findResident_label" Content="FIND A RESIDENT" HorizontalAlignment="Center" Margin="198,40,184,0" VerticalAlignment="Top" FontSize="20" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Width="180" FontWeight="Bold"/>
+        <TextBox x:Name="searchResident_txtbx" Height="40" TextWrapping="Wrap" Text="room number" VerticalAlignment="Top" Margin="155,100,277,0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        <Button x:Name="searchResident_btn" Content="SEARCH" Margin="0,100,172,0" VerticalAlignment="Top" Height="40" Background="#FF46F957" Foreground="White" FontWeight="Bold" UseLayoutRounding="True" HorizontalAlignment="Right" Width="100"/>
+        <Button x:Name="searchResident_btn_Copy" Content="REMOVE" Margin="0,100,67,0" VerticalAlignment="Top" Height="40" Background="#FFF94646" Foreground="White" FontWeight="Bold" UseLayoutRounding="True" HorizontalAlignment="Right" Width="100"/>
+        
+        <Label x:Name="firstname_titel_label" Content="FIRST NAME" HorizontalAlignment="Left" Margin="155,145,0,0" VerticalAlignment="Top" FontSize="9" FontWeight="Bold"/>
+        <Label x:Name="lastname_title_lable" Content="LAST NAME" HorizontalAlignment="Left" Margin="295,145,0,0" VerticalAlignment="Top" FontSize="9" FontWeight="Bold"/>
+        <Label x:Name="username_title_header" Content="USERNAME" HorizontalAlignment="Left" Margin="155,196,0,0" VerticalAlignment="Top" FontSize="9" FontWeight="Bold"/>
+        <Label x:Name="room_title_label" Content="ROOM NUMBER" HorizontalAlignment="Left" Margin="295,196,0,0" VerticalAlignment="Top" FontSize="9" FontWeight="Bold"/>
+        <Label x:Name="licenseplate_title_label" Content="LICENSE PLATE" HorizontalAlignment="Left" Margin="155,245,0,0" VerticalAlignment="Top" FontSize="9" FontWeight="Bold"/>
+
+        <Label x:Name="findResidentFirstname_label" Content="FIRST NAME" HorizontalAlignment="Left" Margin="155,162,0,0" VerticalAlignment="Top" FontSize="14" Visibility="Hidden"/>
+        <Label x:Name="findResidentLastname_label" Content="LAST NAME" HorizontalAlignment="Left" Margin="295,162,0,0" VerticalAlignment="Top" FontSize="14" Visibility="Hidden"/>
+        <Label x:Name="findResidentUsername_label" Content="USERNAME" HorizontalAlignment="Left" Margin="155,212,0,0" VerticalAlignment="Top" FontSize="14" RenderTransformOrigin="0.5,0.5" Visibility="Visible"/>
+        <Label x:Name="findResidentRoom_label" Content="ROOM" HorizontalAlignment="Left" Margin="294,211,0,0" VerticalAlignment="Top" FontSize="14" Visibility="Hidden"/>
+        <Label x:Name="findResidentLicense_label" Content="LICENSEPLATE" HorizontalAlignment="Left" Margin="155,265,0,0" VerticalAlignment="Top" FontSize="14" Visibility="Hidden"/>
+
+        <Label x:Name="addResident_label" Content="ADD A RESIDENT" HorizontalAlignment="Center" Margin="201,310,188,0" VerticalAlignment="Top" FontSize="20" FontWeight="Bold"/>
+        <Label x:Name="addResidentFirstname_label" Content="FIRST NAME" HorizontalAlignment="Left" Margin="120,361,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold"/>
+        <Label x:Name="addResidentLastname_label" Content="LAST NAME" HorizontalAlignment="Left" Margin="295,361,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold"/>
+        <Label x:Name="addResidentUsername_label" Content="USERNAME" HorizontalAlignment="Left" Margin="120,443,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold"/>
+        <Label x:Name="addResidentRoom_label" Content="ROOM NUMBER" HorizontalAlignment="Left" Margin="295,443,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold"/>
+        <Label x:Name="addResidentLicense_label" Content="LICENSE PLATE" HorizontalAlignment="Left" Margin="120,521,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold"/>
+
+        <TextBox x:Name="firstname_txtbx" Height="40" TabIndex="1" TextWrapping="Wrap" Text="first name" Margin="120,390,282,0" VerticalContentAlignment="Center" VerticalAlignment="Top" Padding="5,0,0,0"/>
+        <TextBox x:Name="lastname_txtbox" Height="40" TabIndex="2" TextWrapping="Wrap" Text="last name" Margin="295,390,106,0" VerticalContentAlignment="Center" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" Padding="5,0,0,0"> </TextBox>
+        <TextBox x:Name="username_txtbx" Height="40" TabIndex="3" TextWrapping="Wrap" Text="username" Margin="120,472,282,0" VerticalContentAlignment="Center" VerticalAlignment="Top" Padding="5,0,0,0"/>
+        <TextBox x:Name="roomnr_txtbx" Height="40" TabIndex="4" TextWrapping="Wrap" Text="room number" VerticalAlignment="Top" Margin="295,472,107,0" VerticalContentAlignment="Center" Padding="5,0,0,0"/>
+        <TextBox x:Name="licenseplate_txtbx" Height="40" TabIndex="5" TextWrapping="Wrap" Text="license plate" VerticalAlignment="Top" Width="160" Margin="120,550,282,0" VerticalContentAlignment="Center" Padding="5,0,0,0"/>
+    
+        <Button x:Name="createResident_btn" Content="CREATE" TabIndex="5" HorizontalAlignment="Center" Margin="0,610,0,0" VerticalAlignment="Top" Width="160" Height="35" Background="#FF46F957" Foreground="White" FontWeight="Bold"/>
+
+        <Label x:Name="label" Content="BACK" HorizontalAlignment="Left" MouseUp="goBackHome" VerticalAlignment="Top" Margin="40,40,0,0" FontWeight="Bold" FontSize="14" Cursor="Hand"/>
+        <Image x:Name="sign_out_png" Margin="40,70,0,0" Source="Images/sign_out.png" Stretch="Fill" MouseUp="goBackHome" HorizontalAlignment="Left" VerticalAlignment="Top" Height="42" Width="40" RenderTransformOrigin="0.5,0.5" Cursor="Hand">
+            <Image.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleX="-1"/>
+                </TransformGroup>
+            </Image.RenderTransform>
+        </Image>
+
+    </Grid>
+</Window>
