@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Parking_App_WPF"
         mc:Ignorable="d"
    
-        Title="ManageUsersWindow" Height="700" Width="570" WindowStartupLocation="CenterScreen">
+        Title="ManageUsersWindow" Height="700" Width="570">
     <Grid Background="#FFCDCDCD">
         <Label x:Name="findResident_label" Content="FIND A RESIDENT" HorizontalAlignment="Center" Margin="198,40,184,0" VerticalAlignment="Top" FontSize="20" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Width="180" FontWeight="Bold"/>
         <TextBox x:Name="searchResident_txtbx" Height="40" TextWrapping="Wrap" VerticalAlignment="Top" Margin="155,100,277,0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
