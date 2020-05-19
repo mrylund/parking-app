@@ -28,7 +28,7 @@
                 <Style TargetType="{x:Type TextBlock}">
                     <Setter Property="Visibility" Value="Collapsed"/>
                     <Style.Triggers>
-                        <DataTrigger Binding="{Binding Text, ElementName=licensePlate_txtbx}" Value="">
+                        <DataTrigger Binding="{Binding IsFocused, ElementName=licensePlate_txtbx}" Value="False">
                             <Setter Property="Visibility" Value="Visible"/>
                         </DataTrigger>
                     </Style.Triggers>
