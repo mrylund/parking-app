@@ -11,12 +11,12 @@
         <Label x:Name="findResident_label" Content="FIND A RESIDENT" HorizontalAlignment="Center" Margin="198,40,184,0" VerticalAlignment="Top" FontSize="20" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Width="180" FontWeight="Bold"/>
         <Button x:Name="searchResident_btn" Content="SEARCH" Margin="0,100,172,0" VerticalAlignment="Top" Height="40" Background="#FF46F957" Foreground="White" FontWeight="Bold" UseLayoutRounding="True" HorizontalAlignment="Right" Width="100"/>
         <Label x:Name="addResident_label" Content="ADD A RESIDENT" HorizontalAlignment="Center" Margin="201,310,188,0" VerticalAlignment="Top" FontSize="20" FontWeight="Bold"/>
-        <TextBox x:Name="firstname_txtbx" Height="40" TextWrapping="Wrap" Text="first name" Margin="120,390,282,0" VerticalContentAlignment="Center" VerticalAlignment="Top" Padding="5,0,0,0"/>
-        <TextBox x:Name="roomnr_txtbx" Height="40" TextWrapping="Wrap" Text="room number" VerticalAlignment="Top" Margin="295,472,107,0" VerticalContentAlignment="Center" Padding="5,0,0,0"/>
-        <TextBox x:Name="licenseplate_txtbx" Height="40" TextWrapping="Wrap" Text="licenseplate" VerticalAlignment="Top" Width="160" Margin="120,550,282,0" VerticalContentAlignment="Center" Padding="5,0,0,0"/>
-        <TextBox x:Name="lastname_txtbox" Height="40" TextWrapping="Wrap" Text="last name" Margin="295,390,106,0" VerticalContentAlignment="Center" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" Padding="5,0,0,0"> </TextBox>
-        <Button x:Name="createResident_btn" Content="CREATE" HorizontalAlignment="Center" Margin="0,610,0,0" VerticalAlignment="Top" Width="160" Height="35" Background="#FF46F957" Foreground="White" FontWeight="Bold"/>
-        <TextBox x:Name="username_txtbx" Height="40" TextWrapping="Wrap" Text="username" Margin="120,472,282,0" VerticalContentAlignment="Center" VerticalAlignment="Top" Padding="5,0,0,0"/>
+        <TextBox x:Name="firstname_txtbx" Height="40" TabIndex="1" TextWrapping="Wrap" Text="first name" Margin="120,390,282,0" VerticalContentAlignment="Center" VerticalAlignment="Top" Padding="5,0,0,0"/>
+        <TextBox x:Name="roomnr_txtbx" Height="40" TabIndex="4" TextWrapping="Wrap" Text="room number" VerticalAlignment="Top" Margin="295,472,107,0" VerticalContentAlignment="Center" Padding="5,0,0,0"/>
+        <TextBox x:Name="licenseplate_txtbx" Height="40" TabIndex="5" TextWrapping="Wrap" Text="licenseplate" VerticalAlignment="Top" Width="160" Margin="120,550,282,0" VerticalContentAlignment="Center" Padding="5,0,0,0"/>
+        <TextBox x:Name="lastname_txtbox" Height="40" TabIndex="2" TextWrapping="Wrap" Text="last name" Margin="295,390,106,0" VerticalContentAlignment="Center" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" Padding="5,0,0,0"> </TextBox>
+        <Button x:Name="createResident_btn" Content="CREATE" TabIndex="5" HorizontalAlignment="Center" Margin="0,610,0,0" VerticalAlignment="Top" Width="160" Height="35" Background="#FF46F957" Foreground="White" FontWeight="Bold"/>
+        <TextBox x:Name="username_txtbx" Height="40" TabIndex="3" TextWrapping="Wrap" Text="username" Margin="120,472,282,0" VerticalContentAlignment="Center" VerticalAlignment="Top" Padding="5,0,0,0"/>
         <Label x:Name="addResidentFirstname_label" Content="FIRST NAME" HorizontalAlignment="Left" Margin="120,361,0,0" VerticalAlignment="Top" FontSize="14"/>
         <Label x:Name="addResidentLastname_label" Content="LAST NAME" HorizontalAlignment="Left" Margin="295,361,0,0" VerticalAlignment="Top" FontSize="14"/>
         <Label x:Name="addResidentUsername_label" Content="USERNAME" HorizontalAlignment="Left" Margin="120,443,0,0" VerticalAlignment="Top" FontSize="14"/>
