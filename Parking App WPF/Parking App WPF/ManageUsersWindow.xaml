@@ -106,7 +106,7 @@
         </TextBlock>
         
         
-        <TextBox x:Name="password_txtbx" Height="40" TabIndex="4" TextWrapping="Wrap" VerticalAlignment="Top" Margin="295,472,107,0" VerticalContentAlignment="Center" Padding="5,0,0,0" FontSize="14"/>
+        <PasswordBox x:Name="password_txtbx" Height="40" TabIndex="4" VerticalAlignment="Top" Margin="295,472,107,0" VerticalContentAlignment="Center" Padding="5,0,0,0" FontSize="14"/>
         <TextBlock x:Name="Placeholder_password" IsHitTestVisible="False" TextWrapping="Wrap" Text="Password" Margin="295,472,107,0" Foreground="DarkGray" VerticalAlignment="Top"  HorizontalAlignment="Center" Height="40" FontSize="14" Padding="0,10.4,0,0">
             <TextBlock.Style>
                 <Style TargetType="{x:Type TextBlock}">
@@ -114,7 +114,7 @@
                     <Style.Triggers>
                         <MultiDataTrigger>
                             <MultiDataTrigger.Conditions>
-                                <Condition Binding="{Binding Text, ElementName=password_txtbx}" Value="" />
+                                <Condition Binding="{Binding Password, ElementName=password_txtbx}" Value="" />
                                 <Condition Binding="{Binding IsFocused, ElementName=password_txtbx}" Value="False" />
                             </MultiDataTrigger.Conditions>
                             <Setter Property="Visibility" Value="Visible"/>

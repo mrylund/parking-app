@@ -27,9 +27,9 @@ namespace Parking_App_WPF
         {
             // Gather the textbox objects and the content in them.
             TextBox usnTextBox = username_txtbx;
-            TextBox pwTextBox = password_txtbx;
+            PasswordBox pwTextBox = password_txtbx;
             string username = usnTextBox.Text;
-            string password = pwTextBox.Text;
+            string password = pwTextBox.Password;
 
             // Get a user object from the provided credentials, if the user is invalud exit the function.
             User user = AuthenticateUser(username, password);

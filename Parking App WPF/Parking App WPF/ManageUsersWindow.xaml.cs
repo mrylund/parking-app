@@ -36,13 +36,13 @@ namespace Parking_App_WPF
             TextBox firstnameTextBox = firstname_txtbx;
             TextBox lastnameTextBox = lastname_txtbox;
             TextBox usernameTextBox = username_txtbx;
-            TextBox passwordTextBox = password_txtbx;
+            PasswordBox passwordTextBox = password_txtbx;
             TextBox roomNumberTextBox = roomnr_txtbx;
             TextBox licensePlateTextBox = licenseplate_txtbx;
             string firstname = firstnameTextBox.Text;
             string lastname = lastnameTextBox.Text;
             string username = usernameTextBox.Text;
-            string password = passwordTextBox.Text;
+            string password = passwordTextBox.Password;
             string roomNumber = roomNumberTextBox.Text;
             string licensePlate = licensePlateTextBox.Text;
 
@@ -56,7 +56,7 @@ namespace Parking_App_WPF
                 firstnameTextBox.Text = string.Empty;
                 lastnameTextBox.Text = string.Empty;
                 usernameTextBox.Text = string.Empty;
-                passwordTextBox.Text = string.Empty;
+                passwordTextBox.Password = string.Empty;
                 roomNumberTextBox.Text = string.Empty;
                 licensePlateTextBox.Text = string.Empty;
 
