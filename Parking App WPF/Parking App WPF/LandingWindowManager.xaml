@@ -46,10 +46,10 @@
 
         <Label x:Name="findLicense_label" Content="" HorizontalAlignment="Left" Margin="88,265,0,0" VerticalAlignment="Top" FontSize="14" Visibility="Visible" Width="100" Height="30" HorizontalContentAlignment="Center"/>
         <Label x:Name="findHrs_label" Content="" HorizontalAlignment="Center" Margin="260,265,259,0" VerticalAlignment="Top" FontSize="14" RenderTransformOrigin="0.5,0.5" Visibility="Visible" Width="50" Height="30" HorizontalContentAlignment="Center"/>
-        <Label x:Name="findRoomNumber_label" Content="" HorizontalAlignment="Right" Margin="0,265,113,0" VerticalAlignment="Top" FontSize="14" Visibility="Visible" Width="55" Height="30" HorizontalContentAlignment="Center"/>
+        <Label x:Name="findRoomNumber_label" Content="" HorizontalAlignment="Right" Margin="0,265,99.598,0" VerticalAlignment="Top" FontSize="14" Visibility="Visible" Width="80" Height="30" HorizontalContentAlignment="Center"/>
 
 
-        <Button x:Name="button" Content="CHECK" HorizontalAlignment="Center" Margin="0,430,0,0" VerticalAlignment="Top" Width="215" Height="30" Background="#FF46F957" Foreground="White"/>
+        <Button x:Name="button" Content="CHECK" HorizontalAlignment="Center" Margin="0,430,0,0" VerticalAlignment="Top" Width="215" Height="30" Background="#FF46F957" Foreground="White" Click="GetLicensePlateInfo"/>
         <Image x:Name="profile_png" Margin="0,550,60,0" MouseUp="ManageUsers" Source="Images/profile.png"  HorizontalAlignment="Right" VerticalAlignment="Top" Height="38" Width="38" Cursor="Hand"/>
         <Label x:Name="label3" Content="MANAGE USERS" MouseUp="ManageUsers" HorizontalAlignment="Right" Margin="0,590,24,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="14" Cursor="Hand"/>
         <Image x:Name="icon_list_png" Margin="80,550,0,0" Source="Images/icon-list.png" Stretch="Fill" Width="40" Height="45" HorizontalAlignment="Left" VerticalAlignment="Top"/>
