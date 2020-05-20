@@ -52,6 +52,7 @@ namespace Parking_App_WPF
             string query = String.Format("SELECT ID, Username, Name, Room, LicensePlate, Rank FROM users WHERE Username='{0}' AND password='{1}' LIMIT 1", username, shaPassword);
             DataTable dt = mysql.Select(query);
             if (dt.Rows.Count != 1) {
+                invalidUsername_password_label.Visibility = Visibility.Visible;
                 Debug.WriteLine("No user found with provided credentials");
                 return null;
             }

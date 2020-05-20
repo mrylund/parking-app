@@ -46,6 +46,7 @@
 
 
         <Label x:Name="appname_label" Content="ParQer" HorizontalAlignment="Center" Margin="0,40,0,0" VerticalAlignment="Top" FontSize="60" Foreground="White" FontWeight="Bold"/>
+        <Label x:Name="invalidUsername_password_label" Content="Invalid username or password, try again" HorizontalAlignment="Center" Margin="0,165,0,0" VerticalAlignment="Top" Foreground="Red" Visibility="Hidden"/>
 
     </Grid>
 </Window>

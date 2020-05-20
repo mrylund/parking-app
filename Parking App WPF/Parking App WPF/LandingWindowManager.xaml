@@ -21,9 +21,9 @@
         </Image>
         <Label x:Name="label" Content="SIGN OUT" MouseUp="SignOut" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="22,40,0,0" FontWeight="Bold" FontSize="14" Cursor="Hand"/>
 
-        <Label x:Name="label2" Content="CHECK LICENSEPLATE" HorizontalAlignment="Center" Margin="0,176,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="20" Foreground="White"/>
-        <TextBox x:Name="checklicense_txtbx" HorizontalAlignment="Center" Height="40" Margin="0,300,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="215" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="14"/>
-        <TextBlock x:Name="Placeholder_checklicense" IsHitTestVisible="False" TextWrapping="Wrap" Text="Check Licenseplate" Margin="0,300,0,0" Foreground="DarkGray" VerticalAlignment="Top"  HorizontalAlignment="Center" Width="214" Height="40" TextAlignment="Center" FontSize="14" Padding="0,10.8,0,0">
+        <Label x:Name="checkLicenseplate_Title" Content="CHECK LICENSEPLATE" HorizontalAlignment="Center" Margin="0,150,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="20" Foreground="White"/>
+        <TextBox x:Name="checklicense_txtbx" KeyUp="SubmitForm" HorizontalAlignment="Center" Height="40" Margin="0,375,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="215" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="14"/>
+        <TextBlock x:Name="Placeholder_checklicense" IsHitTestVisible="False" TextWrapping="Wrap" Text="Check Licenseplate" Margin="178,375,177,0" Foreground="DarkGray" VerticalAlignment="Top"  HorizontalAlignment="Center" Width="214" Height="40" TextAlignment="Center" FontSize="14" Padding="0,10.8,0,0">
             <TextBlock.Style>
                 <Style TargetType="{x:Type TextBlock}">
                     <Setter Property="Visibility" Value="Collapsed"/>
@@ -39,11 +39,21 @@
                 </Style>
             </TextBlock.Style>
         </TextBlock>
-        <Button x:Name="button" Content="CHECK" HorizontalAlignment="Center" Margin="0,355,0,0" VerticalAlignment="Top" Width="215" Height="30" Background="#FF46F957" Foreground="White"/>
+
+        <Label x:Name="licenseplate_Title" Content="LICENSE PLATE" HorizontalAlignment="Left" Margin="100,245,0,0" VerticalAlignment="Top" FontSize="9" FontWeight="Bold" HorizontalContentAlignment="Center"/>
+        <Label x:Name="hrsLeft_Titel" Content="HOURS LEFT" HorizontalAlignment="Center" Margin="0,245,0,0" VerticalAlignment="Top" FontSize="9" FontWeight="Bold" HorizontalContentAlignment="Center"/>
+        <Label x:Name="roomNumber_Title" Content="ROOM NUMBER" HorizontalAlignment="Right" Margin="0,245,100,0" VerticalAlignment="Top" FontSize="9" FontWeight="Bold" HorizontalContentAlignment="Center"/>
+
+        <Label x:Name="findLicense_label" Content="" HorizontalAlignment="Left" Margin="88,265,0,0" VerticalAlignment="Top" FontSize="14" Visibility="Visible" Width="100" Height="30" HorizontalContentAlignment="Center"/>
+        <Label x:Name="findHrs_label" Content="" HorizontalAlignment="Center" Margin="260,265,259,0" VerticalAlignment="Top" FontSize="14" RenderTransformOrigin="0.5,0.5" Visibility="Visible" Width="50" Height="30" HorizontalContentAlignment="Center"/>
+        <Label x:Name="findRoomNumber_label" Content="" HorizontalAlignment="Right" Margin="0,265,99.598,0" VerticalAlignment="Top" FontSize="14" Visibility="Visible" Width="80" Height="30" HorizontalContentAlignment="Center"/>
+
+
+        <Button x:Name="button" Content="CHECK" HorizontalAlignment="Center" Margin="0,430,0,0" VerticalAlignment="Top" Width="215" Height="30" Background="#FF46F957" Foreground="White" Click="GetLicensePlateInfo"/>
         <Image x:Name="profile_png" Margin="0,550,60,0" MouseUp="ManageUsers" Source="Images/profile.png"  HorizontalAlignment="Right" VerticalAlignment="Top" Height="38" Width="38" Cursor="Hand"/>
         <Label x:Name="label3" Content="MANAGE USERS" MouseUp="ManageUsers" HorizontalAlignment="Right" Margin="0,590,24,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="14" Cursor="Hand"/>
         <Image x:Name="icon_list_png" Margin="80,550,0,0" Source="Images/icon-list.png" Stretch="Fill" Width="40" Height="45" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-        <Label x:Name="label4" Content="CAR OVERVIEW" HorizontalAlignment="Left" Margin="40,590,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="14"/>
+        <Label x:Name="carOverview_label" Content="CAR OVERVIEW" HorizontalAlignment="Left" Margin="40,590,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="14"/>
 
     </Grid>
 </Window>
