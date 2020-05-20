@@ -9,7 +9,7 @@
         Title="ManageUsersWindow" Height="700" Width="570">
     <Grid Background="#FFCDCDCD">
         <Label x:Name="findResident_label" Content="FIND A RESIDENT" HorizontalAlignment="Center" Margin="198,40,184,0" VerticalAlignment="Top" FontSize="20" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Width="180" FontWeight="Bold"/>
-        <TextBox x:Name="searchResident_txtbx" Height="40" TextWrapping="Wrap" VerticalAlignment="Top" Margin="155,100,277,0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        <TextBox x:Name="searchResident_txtbx" Height="40" TextWrapping="Wrap" KeyUp="SubmitForm" VerticalAlignment="Top" Margin="155,100,277,0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
         <TextBlock x:Name="Placeholder_searchResident" IsHitTestVisible="False" TextWrapping="Wrap" Text="Room Number" Margin="155,100,277,0" Foreground="DarkGray" VerticalAlignment="Top"  HorizontalAlignment="Center" Height="40" TextAlignment="Center" FontSize="14" Padding="0,10,0,0">
             <TextBlock.Style>
                 <Style TargetType="{x:Type TextBlock}">

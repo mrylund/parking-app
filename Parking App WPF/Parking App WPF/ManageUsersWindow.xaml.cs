@@ -128,6 +128,11 @@ namespace Parking_App_WPF
             // TODO: Show a message with fail / success message
         }
 
+        private void SubmitForm(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Return) SearchByRoom(sender, e);
+        }
+
         private void SearchByRoom(object sender, RoutedEventArgs e)
         {
             TextBox roomTextBox = (TextBox)searchResident_txtbx;
