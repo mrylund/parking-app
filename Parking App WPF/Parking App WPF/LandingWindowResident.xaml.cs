@@ -1,6 +1,7 @@
 using System;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 
 namespace Parking_App_WPF
 {
@@ -90,11 +91,20 @@ namespace Parking_App_WPF
         }
 
 
+        // Function that runs when a user presses ENTER in a textbox
+        private void SubmitForm(object sender, KeyEventArgs e)
+        {
+            // Check if the key is enter, then run the login function.
+            if (e.Key == Key.Return) AddGuest(sender, e);
+        }
+
+
         // Function to add a new guest.
         private void AddGuest(object sender, RoutedEventArgs e)
         {
             TextBox LicenseTextBox = licensePlate_txtbx;
             user.AddGuest(LicenseTextBox.Text);
+            LicenseTextBox.Text = string.Empty;
             SetPageInfo();
         }
 
@@ -103,6 +113,7 @@ namespace Parking_App_WPF
         {
             TextBox LicenseTextBox = licensePlate_txtbx;
             user.RemoveGuest(LicenseTextBox.Text);
+            LicenseTextBox.Text = string.Empty;
             SetPageInfo();
         }
     }
