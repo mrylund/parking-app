@@ -2,113 +2,114 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Interop;
+using static global_funcs.global_functions;
 
 namespace Parking_App_WPF
 {
-    class User
+    public class User
     {
-        private MySQL mysql;
-        private int UID;
+        // Initialize all global class variables and their getters/setters.
+        private readonly MySQL mysql;
+        private int UserID { get; }
         public string Username { get; set; }
         public string Name { get; set; }
-        public string Room { get; set; }
+        public string RoomNumber { get; set; }
         public string LicensePlate { get; set; }
         public string Rank { get; set; }
         public List<(string, DateTime)> guests { get; set; } = new List<(string, DateTime)>();
 
-        public User(int UID, string Username, string Name, string Room, string LicensePlate, string Rank)
+
+        // Constructor
+        public User(int userID, string username, string name, string roomNumber, string licensePlate, string rank)
         {
+            // Set all the values to the class variables from the given constructor variables.
             mysql = new MySQL();
-            this.UID = UID;
-            this.Username = Username;
-            this.Name = Name;
-            this.Room = Room;
-            this.LicensePlate = LicensePlate;
-            this.Rank = Rank;
+            UserID = userID;
+            Username = username;
+            Name = name;
+            RoomNumber = roomNumber;
+            LicensePlate = licensePlate;
+            Rank = rank;
 
-            fetchGuests();
+            // Fetch all active guest vehicles by the user.
+            FetchGuests();
         }
 
-        public User()
-        {
 
-        }
-
-        private void fetchGuests()
+        // Fetch all the guests of the user and insert them into the guests list.
+        private void FetchGuests()
         {
+            // Clear the list of guests before fetching them.
             guests.Clear();
-            string query = String.Format("SELECT LicensePlate, created FROM guests WHERE Resident={0} AND created > TIMESTAMPADD(DAY, -1, NOW()) ORDER BY created DESC", UID);
+
+            // Select data from the database and check if we have more than 0 rows
+            // if we have less than 1 rows we will exit the function.
+            string query = string.Format("SELECT LicensePlate, created FROM guests WHERE Resident={0} AND created > TIMESTAMPADD(DAY, -1, NOW()) ORDER BY created DESC", UserID);
             DataTable dt = mysql.Select(query);
             if (dt.Rows.Count < 1)
             {
-                Debug.WriteLine("No guests found for this user");
+                Debug.WriteLine("No guests found for this user!");
                 return;
             }
+
+            // Loop through all the rows in the fetched data
+            // for each row a guest licensePlate and creation time is inserted into the guests list.
             foreach(DataRow row in dt.Rows)
             {
-                string license = row["LicensePlate"] == DBNull.Value ? string.Empty : (String)row["LicensePlate"];
+                string license = row["LicensePlate"] == DBNull.Value ? string.Empty : (string)row["LicensePlate"];
                 DateTime created = row["created"] == DBNull.Value ? DateTime.Parse("0") : (DateTime)row["created"];
                 guests.Add((license, created));
-
-                Debug.WriteLine(String.Format("License Plate: {0}    Created: {1}", license, created));
             }
         }
 
-        public (bool, string) checkPlate(string LicensePlate)
+
+        // Add a guest to the user
+        // will add the guest to the database and the object itself.
+        public (bool, string) AddGuest(string licensePlate)
         {
             string msg;
-            string LicensePattern = "[A-Za-z][A-Za-z]\\s?[0-9][0-9]\\s?[0-9][0-9][0-9]";
-            if (!Regex.Match(LicensePlate, LicensePattern).Success)
-            {
-                msg = "The license plate does not match the correct format";
-                Debug.WriteLine(msg);
-                return (false, msg);
-            }
+            bool success;
 
-            LicensePlate = LicensePlate.Replace(" ", String.Empty);
-            LicensePlate = LicensePlate.Insert(2, " ");
-            LicensePlate = LicensePlate.Insert(5, " ");
-            LicensePlate = LicensePlate.ToUpper();
+            // Check if the licenseplate is of valid type
+            // if it is valid replace licensePlate variable with formatted licensePlate.
+            (bool, string) tempTuple = CheckPlate(licensePlate);
+            if (!tempTuple.Item1) return tempTuple;
+            licensePlate = tempTuple.Item2;
 
-            return (true, LicensePlate);
-        }
 
-        public (bool, string) addGuest(string LicensePlate)
-        {
-            string msg;
-
-            (bool, string) temp = checkPlate(LicensePlate);
-            if (!temp.Item1) return temp;
-            LicensePlate = temp.Item2;
-
-            string query = String.Format("SELECT ID, LicensePlate, created, Resident FROM guests WHERE LicensePlate='{0}' AND created > TIMESTAMPADD(DAY, -1, NOW())", LicensePlate);
+            // Query to select all guest vehicles with the same licenseplate and where the start time is older than 1 day.
+            string query = string.Format("SELECT ID, LicensePlate, created, Resident FROM guests WHERE LicensePlate='{0}' AND created > TIMESTAMPADD(DAY, -1, NOW())", licensePlate);
             DataTable dt = mysql.Select(query);
             if (dt.Rows.Count > 0)
             {
+                // If the vehicle already have an active pass, set the row to first entry from the result.
                 DataRow dr = dt.Rows[0];
                 int Resident = dr["Resident"] == DBNull.Value ? 0 : Convert.ToInt32(dr["Resident"]);
-                if ((DateTime.Now - (DateTime)dr["created"]).TotalHours > 23 && Resident == UID)
+
+                // Check if the guest vehicle pass is older than 23 hours and if the user is the one who added it.
+                if ((DateTime.Now - (DateTime)dr["created"]).TotalHours > 23 && Resident == UserID)
                 {
-                    query = String.Format("UPDATE guests SET created=current_timestamp() WHERE ID='{0}' AND Resident='{1}'", Convert.ToInt32(dr["ID"]), UID);
-                    mysql.Execute(query);
-                    msg = String.Format("Updated expiration date of guest pass for license plate {0}", LicensePlate);
-                    return (true, msg);
+                    // True: Update the guestpass creation time to current time.
+                    query = string.Format("UPDATE guests SET created=current_timestamp() WHERE ID='{0}' AND Resident='{1}'", Convert.ToInt32(dr["ID"]), UserID);
+                    success = mysql.Execute(query);
+                    msg = string.Format("Updated expiration date of guest pass for license plate {0}", licensePlate);
+                    return (success, msg);
                 }
-                msg = "An active guest pass with given license already exist";
-                Debug.WriteLine(msg);
-                return (false, msg);
+                else
+                {
+                    // False: Do nothing
+                    msg = "An active guest pass with given license already exist";
+                    Debug.WriteLine(msg);
+                    return (false, msg);
+                }
             }
 
-            query = String.Format("SELECT COUNT(*) AS NumCars FROM guests WHERE Resident='{0}' AND created > TIMESTAMPADD(DAY, -1, NOW())", UID);
+            // Select the total count of active guest vehicles the user currently have.
+            query = string.Format("SELECT COUNT(*) AS NumCars FROM guests WHERE Resident='{0}' AND created > TIMESTAMPADD(DAY, -1, NOW())", UserID);
             dt = mysql.Select(query);
             int NumCars = dt.Rows[0]["NumCars"] == DBNull.Value ? 0 : Convert.ToInt32(dt.Rows[0]["NumCars"]);
+
+            // If the user got 5 cars or more we will not allow the user to add more guest vehicles.
             if (NumCars >= 5)
             {
                 msg = "You have more than the max allowed of guest vehicles";
@@ -116,25 +117,34 @@ namespace Parking_App_WPF
                 return (false, msg);
             }
 
-            query = string.Format("INSERT INTO guests(LicensePlate, Resident) VALUES('{0}', '{1}')", LicensePlate, UID);
-            mysql.Execute(query);
-            fetchGuests();
-            return (false, "");
+            // Add the guest vehicle to the database
+            query = string.Format("INSERT INTO guests(LicensePlate, Resident) VALUES('{0}', '{1}')", licensePlate, UserID);
+            success = mysql.Execute(query);
+
+            // Re-fetch guest vehicles
+            FetchGuests();
+            return (success, "");
         }
 
-        public (bool, string) removeGuest(string LicensePlate)
+        // Remove a guest from the user
+        // Will expire the guest pass and reload the guests list
+        public (bool, string) RemoveGuest(string licensePlate)
         {
-            (bool, string) temp = checkPlate(LicensePlate);
-            if (!temp.Item1) return temp;
-            LicensePlate = temp.Item2;
+            // Check if the licenseplate is of valid type
+            // if it is valid replace licensePlate variable with formatted licensePlate.
+            (bool, string) tempTuple = CheckPlate(licensePlate);
+            if (!tempTuple.Item1) return tempTuple;
+            licensePlate = tempTuple.Item2;
 
-            // Kinda lazy way of doing it, but it works 
+            // Expire the guest pass in the database
             // TODO: Make it remove data after x time, probably a database fix
-            string query = String.Format("UPDATE guests SET created = TIMESTAMPADD(DAY, -2, NOW()) WHERE LicensePlate = '{0}' AND Resident = '{1}' AND created > TIMESTAMPADD(DAY, -1, NOW())", LicensePlate, UID);
-            mysql.Execute(query);
-            fetchGuests();
+            string query = string.Format("UPDATE guests SET created = TIMESTAMPADD(DAY, -2, NOW()) WHERE LicensePlate = '{0}' AND Resident = '{1}' AND created > TIMESTAMPADD(DAY, -1, NOW())", licensePlate, UserID);
+            bool success = mysql.Execute(query);
 
-            return (true, "");
+            // Re-fetch guest vehicles
+            FetchGuests();
+
+            return (success, "!");
         }
 
     }

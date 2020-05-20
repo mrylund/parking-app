@@ -1,51 +1,45 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace Parking_App_WPF
 {
-    /// <summary>
-    /// Interaction logic for LandingWindowResident.xaml
-    /// </summary>
     public partial class LandingWindowResident : Window
     {
-        private User user;
-        public LandingWindowResident(Object user)
+        private readonly User user;
+
+        public LandingWindowResident(object user)
         {
             this.user = (User)user;
             InitializeComponent();
-            setPageInfo();
+            SetPageInfo();
         }
 
+
+        // Function to sign out, takes you back to login window.
         public void SignOut(object sender, RoutedEventArgs E)
         {
             MainWindow mainW = new MainWindow
             {
                 Owner = this,
-                WindowStartupLocation = System.Windows.WindowStartupLocation.CenterOwner
+                WindowStartupLocation = WindowStartupLocation.CenterOwner
             };
             mainW.Show();
             mainW.Owner = null;
 
-            this.Close();
+            Close();
         }
 
-        private void setPageInfo()
-        {
-            residentName_label.Content = user.Name;
-            residentRoom_label.Content = "Room " + user.Room;
-            residentLicens_label.Content = String.IsNullOrEmpty(user.LicensePlate) ? "No vehicle registered" : user.LicensePlate;
 
+        // A function to set all the information about the user on the page.
+        private void SetPageInfo()
+        {
+            // Set the content of the users own information.
+            residentName_label.Content = user.Name;
+            residentRoom_label.Content = "Room " + user.RoomNumber;
+            residentLicens_label.Content = string.IsNullOrEmpty(user.LicensePlate) ? "No vehicle registered" : user.LicensePlate;
+
+            // Check how many guests the user have and hide all labels exceeding that count.
             switch (user.guests.Count)
             {
                 case 0:
@@ -65,6 +59,7 @@ namespace Parking_App_WPF
                     break;
             }
 
+            // Loop through all the guest vehicles and display them on the page
             for (int i = 1; i <= user.guests.Count; i++)
             {
                 string content = string.Format("{0} - Time left: {1}", user.guests[i-1].Item1, 24 - Convert.ToInt32((TimeZoneInfo.ConvertTimeToUtc(DateTime.Now) - user.guests[i-1].Item2).TotalHours));
@@ -94,18 +89,21 @@ namespace Parking_App_WPF
             }
         }
 
-        private void addGuest(object sender, RoutedEventArgs e)
+
+        // Function to add a new guest.
+        private void AddGuest(object sender, RoutedEventArgs e)
         {
-            TextBox LicenseTextBox = (TextBox)licensePlate_txtbx;
-            user.addGuest(LicenseTextBox.Text);
-            setPageInfo();
+            TextBox LicenseTextBox = licensePlate_txtbx;
+            user.AddGuest(LicenseTextBox.Text);
+            SetPageInfo();
         }
 
-        private void removeGuest(object sender, RoutedEventArgs e)
+        // Function to remove an existing guest.
+        private void RemoveGuest(object sender, RoutedEventArgs e)
         {
-            TextBox LicenseTextBox = (TextBox)licensePlate_txtbx;
-            user.removeGuest(LicenseTextBox.Text);
-            setPageInfo();
+            TextBox LicenseTextBox = licensePlate_txtbx;
+            user.RemoveGuest(LicenseTextBox.Text);
+            SetPageInfo();
         }
     }
 }
