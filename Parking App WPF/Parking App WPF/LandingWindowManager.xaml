@@ -22,7 +22,7 @@
         <Label x:Name="label" Content="SIGN OUT" MouseUp="SignOut" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="22,40,0,0" FontWeight="Bold" FontSize="14" Cursor="Hand"/>
 
         <Label x:Name="checkLicenseplate_Title" Content="CHECK LICENSEPLATE" HorizontalAlignment="Center" Margin="0,150,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="20" Foreground="White"/>
-        <TextBox x:Name="checklicense_txtbx" HorizontalAlignment="Center" Height="40" Margin="0,375,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="215" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="14"/>
+        <TextBox x:Name="checklicense_txtbx" KeyUp="SubmitForm" HorizontalAlignment="Center" Height="40" Margin="0,375,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="215" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="14"/>
         <TextBlock x:Name="Placeholder_checklicense" IsHitTestVisible="False" TextWrapping="Wrap" Text="Check Licenseplate" Margin="178,375,177,0" Foreground="DarkGray" VerticalAlignment="Top"  HorizontalAlignment="Center" Width="214" Height="40" TextAlignment="Center" FontSize="14" Padding="0,10.8,0,0">
             <TextBlock.Style>
                 <Style TargetType="{x:Type TextBlock}">

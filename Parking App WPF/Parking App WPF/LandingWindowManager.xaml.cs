@@ -43,6 +43,11 @@ namespace Parking_App_WPF
             this.Close();
         }
 
+        private void SubmitForm(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Return) GetLicensePlateInfo(sender, e);
+        }
+
         private void GetLicensePlateInfo(object sender, RoutedEventArgs e)
         {
             TextBox licensePlateTextBox = (TextBox)checklicense_txtbx;
@@ -72,23 +77,30 @@ namespace Parking_App_WPF
                 "INNER JOIN users ON guests.Resident = users.ID " +
                 "WHERE guests.LicensePlate = '{0}' AND guests.created > TIMESTAMPADD(DAY, -1, NOW()) " +
                 "LIMIT 1;", LicensePlate);
-
             DataTable dt = mysql.Select(query);
             if (dt.Rows.Count != 1)
             {
-                findHrs_label.Content = 0;
-                findRoomNumber_label.Content = "Not Found";
-                Debug.WriteLine("No user found with provided room number");
+                query = String.Format("SELECT Room FROM users WHERE LicensePlate =  '{0}' LIMIT 1", LicensePlate);
+                dt = mysql.Select(query);
+                if (dt.Rows.Count != 1)
+                {
+                    findLicense_label.Content = LicensePlate;
+                    findHrs_label.Content = 0;
+                    findRoomNumber_label.Content = "Not Found";
+                    checklicense_txtbx.Text = string.Empty;
+                    return;
+                }
+                DataRow dr = dt.Rows[0];
+                findHrs_label.Content = "R";
+                findRoomNumber_label.Content = dr["Room"] == DBNull.Value ? string.Empty : (String)dr["Room"];
             } else
             {
                 DataRow dr = dt.Rows[0];
-                int TimeLeft = 24 - Convert.ToInt32((TimeZoneInfo.ConvertTimeToUtc(DateTime.Now) - (DateTime)dr["created"]).TotalHours);
-                string Room = dr["Room"] == DBNull.Value ? string.Empty : (String)dr["Room"];
-                findHrs_label.Content = TimeLeft;
-                findRoomNumber_label.Content = Room;
+                findHrs_label.Content = 24 - Convert.ToInt32((TimeZoneInfo.ConvertTimeToUtc(DateTime.Now) - (DateTime)dr["created"]).TotalHours);
+                findRoomNumber_label.Content = dr["Room"] == DBNull.Value ? string.Empty : (String)dr["Room"];
             }
-
             findLicense_label.Content = LicensePlate;
+            checklicense_txtbx.Text = string.Empty;
         }
 
         // TODO: CREATE METHOD FOR CHANGING PAGE 
