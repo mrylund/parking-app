@@ -6,10 +6,10 @@
         xmlns:local="clr-namespace:Parking_App_WPF"
         mc:Ignorable="d"
    
-        Title="ManageUsersWindow" Height="700" Width="570">
+        Title="Manage Users" Height="700" Width="570">
     <Grid Background="#FFCDCDCD">
         <Label x:Name="findResident_label" Content="FIND A RESIDENT" HorizontalAlignment="Center" Margin="198,40,184,0" VerticalAlignment="Top" FontSize="20" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Width="180" FontWeight="Bold"/>
-        <TextBox x:Name="searchResident_txtbx" Height="40" TextWrapping="Wrap" VerticalAlignment="Top" Margin="155,100,277,0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        <TextBox x:Name="searchResident_txtbx" Height="40" TextWrapping="Wrap" KeyUp="SubmitForm" VerticalAlignment="Top" Margin="155,100,277,0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
         <TextBlock x:Name="Placeholder_searchResident" IsHitTestVisible="False" TextWrapping="Wrap" Text="Room Number" Margin="155,100,277,0" Foreground="DarkGray" VerticalAlignment="Top"  HorizontalAlignment="Center" Height="40" TextAlignment="Center" FontSize="14" Padding="0,10,0,0">
             <TextBlock.Style>
                 <Style TargetType="{x:Type TextBlock}">
@@ -161,13 +161,13 @@
                 </Style>
             </TextBlock.Style>
         </TextBlock>
-        
 
 
-        <Button x:Name="createResident_btn" Content="CREATE" TabIndex="5" HorizontalAlignment="Center" Margin="0,610,0,0" VerticalAlignment="Top" Width="160" Height="35" Background="#FF46F957" Foreground="White" FontWeight="Bold" Click="CreateResident"/>
 
-        <Label x:Name="label" Content="BACK" HorizontalAlignment="Left" MouseUp="goBackHome" VerticalAlignment="Top" Margin="40,40,0,0" FontWeight="Bold" FontSize="14" Cursor="Hand"/>
-        <Image x:Name="sign_out_png" Margin="40,70,0,0" Source="Images/sign_out.png" Stretch="Fill" MouseUp="goBackHome" HorizontalAlignment="Left" VerticalAlignment="Top" Height="42" Width="40" RenderTransformOrigin="0.5,0.5" Cursor="Hand">
+        <Button x:Name="createResident_btn" Content="CREATE" TabIndex="5" HorizontalAlignment="Center" Margin="0,610,0,0" VerticalAlignment="Top" Width="160" Height="35" Background="#FF46F957" Foreground="White" FontWeight="Bold" Click="SubmitResident"/>
+
+        <Label x:Name="label" Content="BACK" HorizontalAlignment="Left" MouseUp="GoBackHome" VerticalAlignment="Top" Margin="40,40,0,0" FontWeight="Bold" FontSize="14" Cursor="Hand"/>
+        <Image x:Name="sign_out_png" Margin="40,70,0,0" Source="Images/sign_out.png" Stretch="Fill" MouseUp="GoBackHome" HorizontalAlignment="Left" VerticalAlignment="Top" Height="42" Width="40" RenderTransformOrigin="0.5,0.5" Cursor="Hand">
             <Image.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform ScaleX="-1"/>

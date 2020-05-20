@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<configuration>
+    <startup> 
+        <supportedRuntime version="v4.0" sku=".NETFramework,Version=v4.7.2" />
+    </startup>
+	<appSettings>
+		<add key="server" value="HOST"/>
+		<add key="database" value="DATABASE"/>
+		<add key="user" value="USERNAME"/>
+		<add key="password" value="PASSWORD"/>
+	</appSettings>
+</configuration>

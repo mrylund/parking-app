@@ -1,42 +1,26 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Diagnostics;
-using System.Linq;
-using System.Security.Cryptography;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+using static global_funcs.global_functions;
 
 namespace Parking_App_WPF
 {
-    /// <summary>
-    /// Interaction logic for ManageUsersWindow.xaml
-    /// </summary>
     public partial class ManageUsersWindow : Window
     {
-        private MySQL mysql;
         public ManageUsersWindow()
         {
             InitializeComponent();
-            mysql = new MySQL();
         }
 
-        public void goBackHome(object sender, RoutedEventArgs e)
+
+        // Function to go back to the home screen
+        public void GoBackHome(object sender, RoutedEventArgs e)
         {
-           
             LandingWindowManager lwm = new LandingWindowManager()
             {
                 Owner = this,
-                WindowStartupLocation = System.Windows.WindowStartupLocation.CenterOwner
+                WindowStartupLocation = WindowStartupLocation.CenterOwner
             };
 
             lwm.Show();
@@ -45,68 +29,29 @@ namespace Parking_App_WPF
             this.Close();
         }
 
-        private User GetUserByRoom(string roomNumber)
-        {
-            string query = String.Format("SELECT ID, Username, Name, Room, LicensePlate, Rank FROM users WHERE Room='{0}' LIMIT 1", roomNumber);
-            DataTable dt = mysql.Select(query);
-            if (dt.Rows.Count != 1)
-            {
-                Debug.WriteLine("No user found with provided room number");
-                return null;
-            }
-            DataRow dr = dt.Rows[0];
-            int UID = dr["ID"] == DBNull.Value ? 0 : (int)dr["ID"];
-            string Username = dr["Username"] == DBNull.Value ? string.Empty : (String)dr["Username"];
-            string Name = dr["Name"] == DBNull.Value ? string.Empty : (String)dr["Name"];
-            string Room = dr["Room"] == DBNull.Value ? string.Empty : (String)dr["Room"];
-            string LicensePlate = dr["LicensePlate"] == DBNull.Value ? string.Empty : (String)dr["LicensePlate"];
-            string Rank = dr["Rank"] == DBNull.Value ? string.Empty : (String)dr["Rank"];
-            User user = new User(UID, Username, Name, Room, LicensePlate, Rank);
-            return user;
-        }
 
-        private string Encrypt(string s)
+        // Function to create a new resident from the entered information in the text boxes.
+        private void SubmitResident(object sender, RoutedEventArgs e)
         {
-            using (SHA256 sha256Hash = SHA256.Create())
-            {
-                byte[] sourceBytes = Encoding.UTF8.GetBytes(s);
-                byte[] hashBytes = sha256Hash.ComputeHash(sourceBytes);
-                string encrypted = BitConverter.ToString(hashBytes).Replace("-", String.Empty);
-                return encrypted;
-            }
-        }
-
-        private void CreateResident(object sender, RoutedEventArgs e)
-        {
-            TextBox firstnameTextBox = (TextBox)firstname_txtbx;
-            TextBox lastnameTextBox = (TextBox)lastname_txtbox;
-            TextBox usernameTextBox = (TextBox)username_txtbx;
-            TextBox passwordTextBox = (TextBox)password_txtbx;
-            TextBox roomNumberTextBox = (TextBox)roomnr_txtbx;
-            TextBox licensePlateTextBox = (TextBox)licenseplate_txtbx;
+            TextBox firstnameTextBox = firstname_txtbx;
+            TextBox lastnameTextBox = lastname_txtbox;
+            TextBox usernameTextBox = username_txtbx;
+            TextBox passwordTextBox = password_txtbx;
+            TextBox roomNumberTextBox = roomnr_txtbx;
+            TextBox licensePlateTextBox = licenseplate_txtbx;
             string firstname = firstnameTextBox.Text;
             string lastname = lastnameTextBox.Text;
             string username = usernameTextBox.Text;
             string password = passwordTextBox.Text;
-            string roomnumber = roomNumberTextBox.Text;
-            string licenseplate = licensePlateTextBox.Text;
-
-            User user = new User();
-            if (licenseplate != string.Empty)
-            {
-                var info = user.checkPlate(licenseplate);
-                if (!info.Item1)
-                {
-                    return;
-                }
-                licenseplate = info.Item2;
-            }
+            string roomNumber = roomNumberTextBox.Text;
+            string licensePlate = licensePlateTextBox.Text;
 
 
-            string query = String.Format("INSERT INTO users (Name, Room, username, password, rank, LicensePlate) VALUES ('{0}', '{1}', '{2}', '{3}', '{4}', '{5}')", firstname + " " + lastname, roomnumber, username, Encrypt(password), "Resident", licenseplate);
+            // Create the resident
+            (bool, string) res = CreateResident(firstname + " " + lastname, username, password, roomNumber, licensePlate);
 
-            bool success = mysql.Execute(query);
-            if (success)
+            // If the insertion was successfull, clear the text boxes text for better user experience.
+            if (res.Item1)
             {
                 firstnameTextBox.Text = string.Empty;
                 lastnameTextBox.Text = string.Empty;
@@ -116,22 +61,25 @@ namespace Parking_App_WPF
                 licensePlateTextBox.Text = string.Empty;
 
             }
-            // TODO: Show a message with fail / success message
+
+
+            // TODO: Show a message with fail / success message (Using res.Item2)
         }
 
-        private void RemoveByRoom(object sender, RoutedEventArgs e)
+
+        // Function that runs when a user presses ENTER in a textbox
+        private void SubmitForm(object sender, KeyEventArgs e)
         {
-            TextBox roomTextBox = (TextBox)searchResident_txtbx;
-            string roomNumber = roomTextBox.Text;
-            string query = String.Format("DELETE from users WHERE Room={0} AND Rank='Resident'", roomNumber);
-            bool success = mysql.Execute(query);
-            // TODO: Show a message with fail / success message
+            // Check if the key is enter, then run the SearchByRoom function.
+            if (e.Key == Key.Return) SearchByRoom(sender, e);
         }
 
         private void SearchByRoom(object sender, RoutedEventArgs e)
         {
-            TextBox roomTextBox = (TextBox)searchResident_txtbx;
+            TextBox roomTextBox = searchResident_txtbx;
             string roomNumber = roomTextBox.Text;
+
+            // Try to fetch a user from the room number, if none found exit function.
             User user = GetUserByRoom(roomNumber);
             if (user == null)
             {
@@ -142,26 +90,56 @@ namespace Parking_App_WPF
                 findResidentUsername_label.Visibility = Visibility.Hidden;
                 return;
             }
+
+            // Split the users name into a last name and first name (Don't care about middle names)
             string[] fullname = user.Name.Split(' ');
             string firstname = fullname.First();
             string lastname = fullname.Last();
 
+
+            // Set the corresponding labels with information and make the labels visible.
             findResidentFirstname_label.Content = firstname;
             findResidentFirstname_label.Visibility = Visibility.Visible;
 
             findResidentLastname_label.Content = lastname;
             findResidentLastname_label.Visibility = Visibility.Visible;
 
-            findResidentLicense_label.Content = String.IsNullOrEmpty(user.LicensePlate) ? "No vehicle registered" : user.LicensePlate;
+            findResidentLicense_label.Content = string.IsNullOrEmpty(user.LicensePlate) ? "No vehicle registered" : user.LicensePlate;
             findResidentLicense_label.Visibility = Visibility.Visible;
 
-            findResidentRoom_label.Content = user.Room;
+            findResidentRoom_label.Content = user.RoomNumber;
             findResidentRoom_label.Visibility = Visibility.Visible;
 
             findResidentUsername_label.Content = user.Username;
             findResidentUsername_label.Visibility = Visibility.Visible;
 
+
+            // Empty the text box
             roomTextBox.Text = string.Empty;
+        }
+
+
+        // Function to remove a resident by the room number
+        private void RemoveByRoom(object sender, RoutedEventArgs e)
+        {
+            TextBox roomTextBox = searchResident_txtbx;
+            string roomNumber = roomTextBox.Text;
+
+            // Remove the resident
+            (bool, string) res = RemoveResident(roomNumber);
+
+            // Empty the text box
+            roomTextBox.Text = string.Empty;
+
+            // Clear all labels
+            findResidentFirstname_label.Visibility = Visibility.Hidden;
+            findResidentLastname_label.Visibility = Visibility.Hidden;
+            findResidentLicense_label.Visibility = Visibility.Hidden;
+            findResidentRoom_label.Visibility = Visibility.Hidden;
+            findResidentUsername_label.Visibility = Visibility.Hidden;
+
+
+            // TODO: Show a message with fail / success message (Using res.Item2)
         }
     }
 }
