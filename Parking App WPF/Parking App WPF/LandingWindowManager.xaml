@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Parking_App_WPF"
         mc:Ignorable="d"
         x:Name="Main"
-        Title="LandingWindowManager" Height="700" Width="575" Background="#FFCDCDCD" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize">
+        Title="Management" Height="700" Width="575" Background="#FFCDCDCD" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize">
     <Grid>
         <Label x:Name="appname_label" Content="ParQer" HorizontalAlignment="Center" Margin="0,40,0,0" VerticalAlignment="Top" FontSize="60" Foreground="White" FontWeight="Bold"/>
         <Image x:Name="sign_out_png" Margin="40,70,0,0" MouseUp="SignOut" Source="/Images/sign_out.png" Stretch="Fill" HorizontalAlignment="Left" VerticalAlignment="Top" Height="42" Width="40" RenderTransformOrigin="0.5,0.5" Cursor="Hand">
