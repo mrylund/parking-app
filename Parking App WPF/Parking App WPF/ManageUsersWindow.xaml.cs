@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -27,6 +28,14 @@ namespace Parking_App_WPF
             lwm.Owner = null;
 
             this.Close();
+        }
+
+
+        // Validate if a textbox is using numbers
+        private void Validatenumber(object sender, TextCompositionEventArgs e)
+        {
+            string regex = "[^0-9]+";
+            e.Handled = Regex.Match(e.Text, regex).Success;
         }
 
 

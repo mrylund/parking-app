@@ -9,7 +9,7 @@
         Title="Manage Users" Height="700" Width="570">
     <Grid Background="#FFCDCDCD">
         <Label x:Name="findResident_label" Content="FIND A RESIDENT" HorizontalAlignment="Center" Margin="198,40,184,0" VerticalAlignment="Top" FontSize="20" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Width="180" FontWeight="Bold"/>
-        <TextBox x:Name="searchResident_txtbx" Height="40" TextWrapping="Wrap" KeyUp="SubmitForm" VerticalAlignment="Top" Margin="155,100,277,0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        <TextBox x:Name="searchResident_txtbx" Height="40" PreviewTextInput="Validatenumber" TextWrapping="Wrap" KeyUp="SubmitForm" VerticalAlignment="Top" Margin="155,100,277,0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
         <TextBlock x:Name="Placeholder_searchResident" IsHitTestVisible="False" TextWrapping="Wrap" Text="Room Number" Margin="155,100,277,0" Foreground="DarkGray" VerticalAlignment="Top"  HorizontalAlignment="Center" Height="40" TextAlignment="Center" FontSize="14" Padding="0,10,0,0">
             <TextBlock.Style>
                 <Style TargetType="{x:Type TextBlock}">
@@ -104,8 +104,8 @@
                 </Style>
             </TextBlock.Style>
         </TextBlock>
-        
-        
+
+
         <PasswordBox x:Name="password_txtbx" Height="40" TabIndex="4" VerticalAlignment="Top" Margin="295,472,107,0" VerticalContentAlignment="Center" Padding="5,0,0,0" FontSize="14"/>
         <TextBlock x:Name="Placeholder_password" IsHitTestVisible="False" TextWrapping="Wrap" Text="Password" Margin="295,472,107,0" Foreground="DarkGray" VerticalAlignment="Top"  HorizontalAlignment="Center" Height="40" FontSize="14" Padding="0,10.4,0,0">
             <TextBlock.Style>
@@ -123,9 +123,9 @@
                 </Style>
             </TextBlock.Style>
         </TextBlock>
-        
-        
-        <TextBox x:Name="roomnr_txtbx" Height="40" TabIndex="5" TextWrapping="Wrap" VerticalAlignment="Top" Width="160" Margin="120,550,282,0" VerticalContentAlignment="Center" Padding="5,0,0,0" FontSize="14"/>
+
+
+        <TextBox x:Name="roomnr_txtbx" Height="40" PreviewTextInput="Validatenumber" TabIndex="5" TextWrapping="Wrap" VerticalAlignment="Top" Width="160" Margin="120,550,282,0" VerticalContentAlignment="Center" Padding="5,0,0,0" FontSize="14"/>
         <TextBlock x:Name="Placeholder_roomnr" IsHitTestVisible="False" TextWrapping="Wrap" Text="Room Number" Margin="120,550,282,0" Foreground="DarkGray" VerticalAlignment="Top"  HorizontalAlignment="Center" Height="40" FontSize="14" Padding="0,10.4,0,0">
             <TextBlock.Style>
                 <Style TargetType="{x:Type TextBlock}">
