@@ -1,6 +1,8 @@
 ﻿using MySql.Data.MySqlClient;
 using System.Diagnostics;
 using System.Data;
+using System.Configuration;
+using System.Collections.Specialized;
 
 namespace Parking_App_WPF
 {
@@ -21,13 +23,15 @@ namespace Parking_App_WPF
         //Initialize values
         private void Initialize()
         {
-            server = "rylund.dev";
-            database = "u748359586_cskarp";
-            uid = "u748359586_cskarp";
-            password = "cskarp";
+            server = ConfigurationManager.AppSettings.Get("server");
+            database = ConfigurationManager.AppSettings.Get("database"); ;
+            uid = ConfigurationManager.AppSettings.Get("user"); ;
+            password = ConfigurationManager.AppSettings.Get("password"); ;
             string connectionString;
             connectionString = "SERVER=" + server + ";" + "DATABASE=" +
             database + ";" + "UID=" + uid + ";" + "PASSWORD=" + password + ";" + "CharSet=utf8; pooling=false;";
+
+            Debug.WriteLine(connectionString);
 
             connection = new MySqlConnection(connectionString);
         }
