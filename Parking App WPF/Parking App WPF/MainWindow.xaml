@@ -7,8 +7,8 @@
         mc:Ignorable="d"
         Title="Login" Height="600" Width="400" ResizeMode="CanMinimize" WindowStartupLocation="CenterScreen" Opacity="0.95" Background="#FFCDCDCD">
     <Grid>
-        <Button x:Name="login_btn" TabIndex="3" Content="Login" HorizontalAlignment="Center" VerticalAlignment="Top" Width="215" Margin="0,345,0,0" Height="35" Click="login" Foreground="White" Background="#FF46F957" FontWeight="Bold"/>
-        <TextBox x:Name="username_txtbx" TabIndex="1" KeyUp="SubmitForm" HorizontalAlignment="Center" Height="45" Margin="0,195,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="215" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" TextChanged="username_txtbx_TextChanged" FontSize="14" Padding="0" />
+        <Button x:Name="login_btn" TabIndex="3" Content="Login" HorizontalAlignment="Center" VerticalAlignment="Top" Width="215" Margin="0,345,0,0" Height="35" Click="Login" Foreground="White" Background="#FF46F957" FontWeight="Bold"/>
+        <TextBox x:Name="username_txtbx" TabIndex="1" KeyUp="SubmitForm" HorizontalAlignment="Center" Height="45" Margin="0,195,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="215" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontSize="14" Padding="0" />
         <TextBlock x:Name="Placeholder_username" IsHitTestVisible="False" TextWrapping="Wrap" Text="Username" Margin="0,196,0,0" Foreground="DarkGray" VerticalAlignment="Top"  HorizontalAlignment="Center" Width="214" Height="44" TextAlignment="Center" FontSize="14" Padding="0,12,0,0">
             <TextBlock.Style>
                 <Style TargetType="{x:Type TextBlock}">
@@ -26,7 +26,7 @@
             </TextBlock.Style>
         </TextBlock>
 
-        <TextBox x:Name="password_txtbx" TabIndex="2" KeyUp="SubmitForm" HorizontalAlignment="Center" Height="45" Margin="0,262,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="215" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" TextChanged="password_txtbx_TextChanged" FontSize="14"  />
+        <TextBox x:Name="password_txtbx" TabIndex="2" KeyUp="SubmitForm" HorizontalAlignment="Center" Height="45" Margin="0,262,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="215" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontSize="14"  />
         <TextBlock x:Name="Placeholder_password" IsHitTestVisible="False" TextWrapping="Wrap" Text="Password" Margin="0,262,0,0" Foreground="DarkGray" VerticalAlignment="Top"  HorizontalAlignment="Center" Width="214" Height="44" TextAlignment="Center" FontSize="14" Padding="0,13,0,0">
             <TextBlock.Style>
                 <Style TargetType="{x:Type TextBlock}">

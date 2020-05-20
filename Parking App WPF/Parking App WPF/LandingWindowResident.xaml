@@ -19,9 +19,9 @@
         <Label x:Name="guestCar3_label" Content="Registered car" HorizontalAlignment="Left" Margin="330,260,0,0" VerticalAlignment="Top" FontSize="15" Visibility="Hidden"/>
         <Label x:Name="guestCar4_label" Content="Registered car" HorizontalAlignment="Left" Margin="330,295,0,0" VerticalAlignment="Top" FontSize="15" Visibility="Hidden"/>
         <Label x:Name="guestCar5_label" Content="Registered car" HorizontalAlignment="Left" Margin="330,330,0,0" VerticalAlignment="Top" FontSize="15" Visibility="Hidden"/>
-        <Button x:Name="addAsGuest_btn" Content="Add as Guest" HorizontalAlignment="Center" VerticalAlignment="Top" Width="214" Margin="0,546.013,0,0" Height="38" FontWeight="Bold" Background="#FF46F957" Foreground="White" Click="addGuest"/>
-        <Button x:Name="removeGuest_btn" Content="Remove Guest" HorizontalAlignment="Center" VerticalAlignment="Top" Width="214" Margin="0,604,0,0" Height="38" Background="#FFF12525" FontWeight="Bold" Foreground="#FFFFE6E6" Click="removeGuest"/>
-        <TextBox x:Name="licensePlate_txtbx" Height="40" Margin="0,486.013,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="214" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Center" FontSize="14"/>
+        <Button x:Name="addAsGuest_btn" Content="Add as Guest" HorizontalAlignment="Center" VerticalAlignment="Top" Width="214" Margin="0,546.013,0,0" Height="38" FontWeight="Bold" Background="#FF46F957" Foreground="White" Click="AddGuest"/>
+        <Button x:Name="removeGuest_btn" Content="Remove Guest" HorizontalAlignment="Center" VerticalAlignment="Top" Width="214" Margin="0,604,0,0" Height="38" Background="#FFF12525" FontWeight="Bold" Foreground="#FFFFE6E6" Click="RemoveGuest"/>
+        <TextBox x:Name="licensePlate_txtbx" Height="40" KeyUp="SubmitForm" Margin="0,486.013,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="214" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Center" FontSize="14"/>
 
         <TextBlock x:Name="Placeholder" IsHitTestVisible="False" TextWrapping="Wrap" Text="Insert Licenseplate" Margin="0,486.013,0,0" Foreground="DarkGray" VerticalAlignment="Top"  HorizontalAlignment="Center" Width="214" Height="40" TextAlignment="Center" FontSize="14" Padding="0,10,0,0">
             <TextBlock.Style>

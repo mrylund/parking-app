@@ -55,6 +55,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="global_functions.cs" />
     <Compile Include="LandingWindowManager.xaml.cs">
       <DependentUpon>LandingWindowManager.xaml</DependentUpon>
     </Compile>
