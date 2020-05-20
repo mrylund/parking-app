@@ -67,20 +67,6 @@ namespace Parking_App_WPF
         }
 
 
-        // Function to remove a resident by the room number
-        private void RemoveByRoom(object sender, RoutedEventArgs e)
-        {
-            TextBox roomTextBox = searchResident_txtbx;
-            string roomNumber = roomTextBox.Text;
-
-            // Remove the resident
-            (bool, string) res = RemoveResident(roomNumber);
-
-
-            // TODO: Show a message with fail / success message (Using res.Item2)
-        }
-
-
         // Function that runs when a user presses ENTER in a textbox
         private void SubmitForm(object sender, KeyEventArgs e)
         {
@@ -130,6 +116,30 @@ namespace Parking_App_WPF
 
             // Empty the text box
             roomTextBox.Text = string.Empty;
+        }
+
+
+        // Function to remove a resident by the room number
+        private void RemoveByRoom(object sender, RoutedEventArgs e)
+        {
+            TextBox roomTextBox = searchResident_txtbx;
+            string roomNumber = roomTextBox.Text;
+
+            // Remove the resident
+            (bool, string) res = RemoveResident(roomNumber);
+
+            // Empty the text box
+            roomTextBox.Text = string.Empty;
+
+            // Clear all labels
+            findResidentFirstname_label.Visibility = Visibility.Hidden;
+            findResidentLastname_label.Visibility = Visibility.Hidden;
+            findResidentLicense_label.Visibility = Visibility.Hidden;
+            findResidentRoom_label.Visibility = Visibility.Hidden;
+            findResidentUsername_label.Visibility = Visibility.Hidden;
+
+
+            // TODO: Show a message with fail / success message (Using res.Item2)
         }
     }
 }
